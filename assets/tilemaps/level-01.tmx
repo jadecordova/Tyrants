@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="22" height="18" tilewidth="64" tileheight="64" infinite="0" backgroundcolor="#1c1c1c" nextlayerid="7" nextobjectid="72">
+ <editorsettings>
+  <export format="json"/>
+ </editorsettings>
+ <tileset firstgid="1" name="tiles" tilewidth="64" tileheight="64" tilecount="256" columns="16">
+  <image source="../tiles/level-01.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="257" name="objects" tilewidth="119" tileheight="120" tilecount="19" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="0">
+   <image width="118" height="73" source="../../RAW/obj/table-01.png"/>
+  </tile>
+  <tile id="1">
+   <image width="67" height="101" source="../../RAW/obj/bed-01.png"/>
+  </tile>
+  <tile id="2">
+   <image width="39" height="42" source="../../RAW/obj/box-01.png"/>
+  </tile>
+  <tile id="3">
+   <image width="23" height="32" source="../../RAW/obj/chair-01.png"/>
+  </tile>
+  <tile id="4">
+   <image width="16" height="41" source="../../RAW/obj/chair-02.png"/>
+  </tile>
+  <tile id="5">
+   <image width="20" height="21" source="../../RAW/obj/chair-03.png"/>
+  </tile>
+  <tile id="7">
+   <image width="73" height="120" source="../../RAW/obj/closet-01.png"/>
+  </tile>
+  <tile id="8">
+   <image width="76" height="105" source="../../RAW/obj/furniture-01.png"/>
+  </tile>
+  <tile id="9">
+   <image width="38" height="65" source="../../RAW/obj/furniture-02.png"/>
+  </tile>
+  <tile id="10">
+   <image width="77" height="48" source="../../RAW/obj/kitchen-01.png"/>
+  </tile>
+  <tile id="11">
+   <image width="78" height="49" source="../../RAW/obj/kitchen-02.png"/>
+  </tile>
+  <tile id="12">
+   <image width="47" height="24" source="../../RAW/obj/kitchen-03.png"/>
+  </tile>
+  <tile id="13">
+   <image width="35" height="106" source="../../RAW/obj/kitchen-04.png"/>
+  </tile>
+  <tile id="14">
+   <image width="22" height="21" source="../../RAW/obj/lamp-off-01.png"/>
+  </tile>
+  <tile id="15">
+   <image width="22" height="21" source="../../RAW/obj/lamp-on-01.png"/>
+  </tile>
+  <tile id="16">
+   <image width="30" height="55" source="../../RAW/obj/plant-01.png"/>
+  </tile>
+  <tile id="17">
+   <image width="119" height="120" source="../../RAW/obj/cabinet-01.png"/>
+  </tile>
+  <tile id="18">
+   <image width="80" height="68" source="../../RAW/obj/sofa-01.png"/>
+  </tile>
+  <tile id="19">
+   <image width="64" height="64" source="../../RAW/obj/stairs-01.png"/>
+  </tile>
+ </tileset>
+ <layer id="1" name="Floor" width="22" height="18">
+  <data encoding="base64">
+   WAAAAFgAAABYAAAAWAAAAFgAAABYAAAAWAAAAFgAAABYAAAAWAAAAFgAAABYAAAAWAAAAFgAAABYAAAAWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFgAAABYAAAAWAAAAFgAAABYAAAAWAAAAFgAAABYAAAAAQAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAAAAAAAAQAAAAMAAAABAAAAAgAAAAIAAABnAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABYAAAAWAAAAAEAAAACAAAABgAAAAcAAAAHAAAACAAAAAIAAAACAAAAAAAAAAEAAAACAAAAAgAAAAIAAAACAAAAZwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWAAAAFgAAAABAAAAAgAAABYAAAAXAAAAFwAAABgAAAACAAAAAgAAAAAAAAABAAAAAAAAAAIAAAACAAAAAgAAAGMAAAABAAAAAgAAAAIAAAAAAAAAAQAAAFgAAABYAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAABAAAAAgAAAAIAAABjAAAAAQAAAGMAAAACAAAAYwAAAAEAAABYAAAAWAAAAGIAAABiAAAAAwAAAAEAAAACAAAAAAAAAAAAAAAAAAAAAwAAAAEAAAAAAAAAAQAAAAIAAAACAAAAYwAAAAEAAABjAAAAAQAAAGMAAAABAAAAWAAAAFgAAAABAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAcwAAAHMAAABzAAAAAgAAAGMAAAABAAAAYwAAAAEAAABjAAAAAQAAAFgAAABYAAAAAQAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAAAAAAAAAAAAwAAAAEAAABjAAAAAQAAAGMAAAABAAAAYwAAAAEAAABYAAAAWAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAIAAAACAAAAAgAAAAIAAAAAAAAAAQAAAAIAAAACAAAAYwAAAAEAAABjAAAAAQAAAGMAAAABAAAAWAAAAFgAAAAAAAAAAAAAAAMAAAABAAAAAgAAAAAAAAABAAAAAgAAAAIAAAACAAAAAAAAAAAAAAAAAAAAAAAAAGMAAAABAAAAYwAAAAEAAABjAAAAAQAAAFgAAABYAAAAAQAAAAIAAAACAAAAAgAAAAIAAACDAAAAAQAAAAIAAAACAAAAAgAAAAIAAAAAAAAAAAAAAAAAAABjAAAAAQAAAGMAAAABAAAAYwAAAAEAAABYAAAAWAAAAAEAAAACAAAAAgAAAAIAAAACAAAAgwAAAAEAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAYwAAAAEAAABjAAAAAQAAAGMAAAABAAAAWAAAAFgAAABYAAAAWAAAAFgAAABYAAAAWAAAAFgAAABYAAAAWAAAAFgAAABYAAAAWAAAAAIAAAACAAAAAgAAAAMAAAABAAAAYwAAAHQAAABjAAAAAQAAAFgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFgAAAABAAAAAgAAAAIAAAACAAAAAgAAAGMAAABjAAAAYwAAAAEAAABYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABYAAAAWAAAAFgAAABYAAAAWAAAAAIAAAACAAAAYwAAAAMAAAABAAAAWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFgAAAABAAAAAgAAAAIAAAACAAAAAgAAAFgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABYAAAAWAAAAFgAAABYAAAAWAAAAFgAAABYAAAA
+  </data>
+ </layer>
+ <layer id="2" name="Walls" width="22" height="18">
+  <data encoding="base64">
+   AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAASAAAAEgAAABIAAAASAAAAFAAAABIAAAASAAAAEgAAADEAAAASAAAAQQAAABIAAAASAAAAEgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAxAAAAAAAAABUAAAAAAAAAAAAAAAAAAAAmAAAARgAAAEYAAABGAAAAKAAAAEYAAABmAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMQAAABIAAAASAAAAEgAAADEAAAASAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADEAAAAAAAAAAAAAAAAAAAAxAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA3AAAAAAAAADEAAAAAAAAAAAAAAAAAAAAxAAAAAAAAAAAAAAAAAAAAMQAAAAAAAAAAAAAAAAAAABIAAAASAAAAEwAAAAAAAAARAAAAEgAAABIAAAASAAAAEwAAAAAAAAAxAAAAAAAAAAAAAAAAAAAAMQAAAAAAAAAxAAAAAAAAADEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOQAAAAAAAAAAAAAAAAAAADEAAAAAAAAAMQAAAAAAAAAxAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADEAAAASAAAAEwAAAAAAAAAxAAAAAAAAADEAAAAAAAAAMQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAxAAAAAAAAAAAAAAAAAAAAMQAAAAAAAAAxAAAAAAAAADEAAAAAAAAAAAAAAAAAAAASAAAAEgAAABMAAAAAAAAAEQAAADEAAAAAAAAAAAAAAAAAAAAAAAAANgAAAAAAAAAAAAAAAAAAADoAAAAAAAAAMQAAAAAAAAAxAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAxAAAAAAAAAAAAAAAAAAAAAAAAABEAAAASAAAAEgAAABIAAAAxAAAAAAAAADEAAAAAAAAAMQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQQAAAAAAAAAxAAAAAAAAADEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYgAAAGIAAABiAAAAYgAAABUAAAAAAAAAMQAAAAAAAAAxAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADYAAABGAAAANwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIIAAAARAAAAEgAAABMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABiAAAAYgAAAGIAAABiAAAAYgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+  </data>
+ </layer>
+ <layer id="3" name="Above" width="22" height="18">
+  <data encoding="base64">
+   IgAAACMAAAAjAAAAIwAAACMAAAAjAAAAIwAAACMAAAAjAAAANQAAACMAAAA1AAAAIwAAACMAAAAjAAAAJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABoAAAAaAAAAGgAAABoAAAAaAAAAAAAAAA0AAAAMgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANAAAAGMAAABjAAAAYwAAAAAAAAAAAAAANAAAADIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIQAAAAAAAAAAAAAAAAAAAGIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADQAAABJAAAARgAAAEYAAABHAAAAAAAAAEUAAABGAAAARgAAAEYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABiAAAAAAAAACEAAAAAAAAAAAAAAAAAAAA0AAAAMgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANAAAADIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEYAAABHAAAAAAAAAGIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADQAAAAyAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABiAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA0AAAASQAAAEYAAABGAAAARwAAAAAAAABFAAAAJwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANAAAADIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEYAAABGAAAARgAAAGIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADQAAAAyAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABiAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA0AAAAMgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANAAAAEIAAABDAAAAQwAAAEMAAABDAAAAQwAAACUAAABDAAAAQwAAAEMAAABDAAAASgAAAAAAAAAAAAAAAAAAAGIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADIAAAAAAAAAAAAAAAAAAABjAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABCAAAAQwAAAEMAAABDAAAASgAAAFkAAABZAAAAWQAAAFkAAAAAAAAANAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADIAAABiAAAAYgAAAGIAAABiAAAAYgAAADQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABCAAAAQwAAAEMAAABDAAAAQwAAAEMAAABEAAAA
+  </data>
+ </layer>
+ <objectgroup id="4" name="Collision">
+  <object id="2" name="wall" type="wall" x="384" y="64" width="192" height="64"/>
+  <object id="3" name="wall" type="wall" x="768" y="64" width="192" height="64"/>
+  <object id="4" name="wall" type="wall" x="640" y="64" width="64" height="64"/>
+  <object id="5" name="wall" type="wall" x="1024" y="192" width="192" height="64"/>
+  <object id="6" name="wall" type="wall" x="1280" y="192" width="64" height="64"/>
+  <object id="7" name="wall" type="wall" x="1088" y="896" width="192" height="128"/>
+  <object id="8" name="wall" type="wall" x="704" y="128" width="64" height="64"/>
+  <object id="9" name="wall" type="wall" x="768" y="512" width="128" height="64"/>
+  <object id="10" name="wall" type="wall" x="704" y="704" width="256" height="64"/>
+  <object id="11" name="wall" type="wall" x="960" y="128" width="64" height="768"/>
+  <object id="12" name="wall" type="wall" x="64" y="640" width="192" height="64"/>
+  <object id="13" name="wall" type="wall" x="64" y="384" width="192" height="64"/>
+  <object id="14" name="wall" type="wall" x="320.5" y="384" width="320" height="64"/>
+  <object id="15" name="wall" type="wall" x="320" y="640" width="64" height="64"/>
+  <object id="16" name="wall" type="wall" x="64" y="64" width="256" height="64"/>
+  <object id="17" name="wall" type="wall" x="0" y="128" width="64" height="704"/>
+  <object id="18" name="wall" type="wall" x="0" y="832" width="768" height="128"/>
+  <object id="19" name="wall" type="wall" x="384" y="640" width="64" height="192"/>
+  <object id="21" name="wall" type="wall" x="768" y="960" width="256" height="128"/>
+  <object id="22" name="wall" type="wall" x="1024" y="1088" width="320" height="64"/>
+  <object id="23" name="wall" type="wall" x="1344" y="192" width="64" height="896"/>
+  <object id="25" name="wall" type="wall" x="1216" y="256" width="64" height="640"/>
+  <object id="26" name="wall" type="wall" x="1088" y="384" width="64" height="575.5"/>
+  <object id="27" name="wall" type="wall" x="704" y="320" width="64" height="384.5"/>
+  <object id="28" name="wall" type="wall" x="576" y="128" width="64" height="256"/>
+ </objectgroup>
+ <objectgroup id="5" name="Lights">
+  <object id="29" name="light" gid="271" x="148" y="100" width="22" height="21">
+   <properties>
+    <property name="image" value="lamp-off-01.png"/>
+   </properties>
+  </object>
+  <object id="30" name="light" gid="271" x="277" y="100" width="22" height="21">
+   <properties>
+    <property name="image" value="lamp-off-01.png"/>
+   </properties>
+  </object>
+  <object id="31" name="light" gid="271" x="917" y="100" width="22" height="21">
+   <properties>
+    <property name="image" value="lamp-off-01.png"/>
+   </properties>
+  </object>
+  <object id="32" name="light" gid="271" x="150" y="420" width="22" height="21">
+   <properties>
+    <property name="image" value="lamp-off-01.png"/>
+   </properties>
+  </object>
+  <object id="33" name="light" gid="271" x="597" y="420" width="22" height="21">
+   <properties>
+    <property name="image" value="lamp-off-01.png"/>
+   </properties>
+  </object>
+  <object id="34" name="light" gid="271" x="727" y="740" width="22" height="21">
+   <properties>
+    <property name="image" value="lamp-off-01.png"/>
+   </properties>
+  </object>
+  <object id="35" name="light" gid="271" x="343" y="676" width="22" height="21">
+   <properties>
+    <property name="image" value="lamp-off-01.png"/>
+   </properties>
+  </object>
+  <object id="36" name="light" gid="271" x="1108" y="228" width="22" height="21">
+   <properties>
+    <property name="image" value="lamp-off-01.png"/>
+   </properties>
+  </object>
+  <object id="37" name="light" gid="271" x="1301" y="229" width="22" height="21">
+   <properties>
+    <property name="image" value="lamp-off-01.png"/>
+   </properties>
+  </object>
+  <object id="38" name="light" gid="271" x="1175" y="996" width="22" height="21">
+   <properties>
+    <property name="image" value="lamp-off-01.png"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="6" name="Objects">
+  <object id="39" name="sofa1" gid="275" x="185" y="147" width="80" height="68">
+   <properties>
+    <property name="image" value="sofa-01.png"/>
+   </properties>
+  </object>
+  <object id="41" name="plant4" gid="273" x="427" y="157" width="30" height="55">
+   <properties>
+    <property name="image" value="plant-01.png"/>
+   </properties>
+  </object>
+  <object id="42" name="plant3" gid="273" x="659" y="146" width="30" height="55">
+   <properties>
+    <property name="image" value="plant-01.png"/>
+   </properties>
+  </object>
+  <object id="43" name="plant2" gid="273" x="64" y="470" width="30" height="55">
+   <properties>
+    <property name="image" value="plant-01.png"/>
+   </properties>
+  </object>
+  <object id="44" name="plant1" gid="273" x="450" y="835" width="30" height="55">
+   <properties>
+    <property name="image" value="plant-01.png"/>
+   </properties>
+  </object>
+  <object id="64" name="furniture4" gid="265" x="883" y="805" width="76" height="105">
+   <properties>
+    <property name="image" value="furniture-01.png"/>
+   </properties>
+  </object>
+  <object id="46" name="furniture3" gid="266" x="839" y="157" width="38" height="65">
+   <properties>
+    <property name="image" value="furniture-02.png"/>
+   </properties>
+  </object>
+  <object id="45" name="furniture2" gid="264" x="769" y="183" width="73" height="120">
+   <properties>
+    <property name="image" value="closet-01.png"/>
+   </properties>
+  </object>
+  <object id="40" name="furniture1" gid="274" x="457" y="187" width="119" height="120">
+   <properties>
+    <property name="image" value="cabinet-01.png"/>
+   </properties>
+  </object>
+  <object id="47" name="bed1" gid="258" x="891" y="212" width="67" height="101">
+   <properties>
+    <property name="image" value="bed-01.png"/>
+   </properties>
+  </object>
+  <object id="48" name="kitchen4" gid="270" x="66" y="784" width="35" height="106">
+   <properties>
+    <property name="image" value="kitchen-04.png"/>
+   </properties>
+  </object>
+  <object id="51" name="kitchen3" gid="269" x="118" y="671" width="47" height="24">
+   <properties>
+    <property name="image" value="kitchen-03.png"/>
+   </properties>
+  </object>
+  <object id="49" name="kitchen2" gid="268" x="92" y="723" width="78" height="49">
+   <properties>
+    <property name="image" value="kitchen-02.png"/>
+   </properties>
+  </object>
+  <object id="50" name="kitchen1" gid="267" x="164" y="723" width="77" height="48">
+   <properties>
+    <property name="image" value="kitchen-01.png"/>
+   </properties>
+  </object>
+  <object id="58" name="table" gid="257" x="101" y="555" width="118" height="73">
+   <properties>
+    <property name="image" value="table-01.png"/>
+   </properties>
+  </object>
+  <object id="59" name="chair" gid="261" x="86" y="525" width="16" height="41">
+   <properties>
+    <property name="image" value="chair-02.png"/>
+   </properties>
+  </object>
+  <object id="60" name="chair" gid="260" x="122" y="558" width="23" height="32">
+   <properties>
+    <property name="image" value="chair-01.png"/>
+   </properties>
+  </object>
+  <object id="61" name="chair" gid="260" x="175" y="555" width="23" height="32">
+   <properties>
+    <property name="image" value="chair-01.png"/>
+   </properties>
+  </object>
+  <object id="62" name="chair" gid="262" x="123" y="480" width="20" height="21">
+   <properties>
+    <property name="image" value="chair-03.png"/>
+   </properties>
+  </object>
+  <object id="63" name="chair" gid="262" x="168" y="480" width="20" height="21">
+   <properties>
+    <property name="image" value="chair-03.png"/>
+   </properties>
+  </object>
+  <object id="67" name="box2" gid="259" x="1304" y="280" width="39" height="42">
+   <properties>
+    <property name="gold" type="int" value="0"/>
+    <property name="image" value="box-01.png"/>
+   </properties>
+  </object>
+  <object id="66" name="box1" gid="259" x="772" y="602" width="39" height="42">
+   <properties>
+    <property name="gold" type="int" value="10"/>
+    <property name="image" value="box-01.png"/>
+   </properties>
+  </object>
+  <object id="70" name="stair-01" gid="276" x="1152" y="896" width="64" height="64">
+   <properties>
+    <property name="destination" value="level-02"/>
+    <property name="image" value="stair-01.png"/>
+    <property name="portal" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

@@ -28,6 +28,10 @@ class WorldScene extends Phaser.Scene
         this.physics.world.bounds.width = map.widthInPixels;
         this.physics.world.bounds.height = map.heightInPixels;
 
+        CreateWalls( this, map, 'Collision' );
+        this.lights = CreateObjects( this, map, 'atlas-01', 'Lights' );
+        this.items = CreateObjects( this, map, 'atlas-01', 'Objects' );
+
         // Player.
         this.player = this.physics.add.sprite( 200, 200, 'player', 6 );
         this.player.setCollideWorldBounds( true );
@@ -37,14 +41,18 @@ class WorldScene extends Phaser.Scene
         this.player.body.setSize( 36, 24 );
         this.player.body.setOffset( 14, 36 );
 
+        this.physics.add.collider( this.player, this.walls, false, false, this );
+
+        this.items.forEach( element =>
+        {
+            this.physics.add.collider( this.player, element, this.CollisionHandler, false, this );
+        } );
+
         // Forefront layer.
         // The layers are drawn in the order they are created.
         // By creating this layer AFTER the player, its elements will appear above the player.
         var above = map.createStaticLayer( 'Above', tiles, 0, 0 );
 
-        CreateWalls( this, map, 'Collision' );
-        CreateObjects( this, map, 'atlas-01', 'Lights' );
-        CreateObjects( this, map, 'atlas-01', 'Objects' );
 
         // Input.
         this.cursors = this.input.keyboard.createCursorKeys();
@@ -100,6 +108,11 @@ class WorldScene extends Phaser.Scene
                 this.physics.add.overlap( this.player, this.spawns, this.onMeetEnemy, false, this );
         this.sys.events.on( 'wake', this.wake, this );
         */
+    }
+
+    CollisionHandler( player, item )
+    {
+        console.log( item );
     }
 
     wake()

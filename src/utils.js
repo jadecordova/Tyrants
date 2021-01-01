@@ -17,11 +17,12 @@ function CreateWalls( scene, map, layerName )
         currentZone.setOrigin( 0, 0 );
         currentZone.body.immovable = true;
     }
-    scene.physics.add.collider( scene.player, scene.walls, false, false, this );
 }
 
 function CreateObjects( scene, map, imageKey, layerName )
 {
+    let result = [];
+
     // Get the Tiled object layer.
     const objectLayer = map.getObjectLayer( layerName );
 
@@ -43,9 +44,10 @@ function CreateObjects( scene, map, imageKey, layerName )
         // Assign properties from temporal object.
         Object.assign( currentObject, properties );
 
-        scene.physics.add.collider( scene.player, currentObject, false, false, this );
-
+        result.push( currentObject );
     }
+
+    return result;
 }
 
 function AssignProperties( obj, prop )

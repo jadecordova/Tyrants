@@ -4,8 +4,7 @@
     {
      "export":
         {
-         "format":"json",
-         "target":"level-01.json"
+         "format":"json"
         }
     },
  "height":18,
@@ -942,10 +941,26 @@
                  "y":602
                 }, 
                 {
-                 "gid":51,
+                 "gid":276,
                  "height":64,
-                 "id":68,
-                 "name":"stairs",
+                 "id":70,
+                 "name":"stair-01",
+                 "properties":[
+                        {
+                         "name":"destination",
+                         "type":"string",
+                         "value":"level-02"
+                        }, 
+                        {
+                         "name":"image",
+                         "type":"string",
+                         "value":"stair-01.png"
+                        }, 
+                        {
+                         "name":"portal",
+                         "type":"bool",
+                         "value":true
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -960,7 +975,7 @@
          "y":0
         }],
  "nextlayerid":7,
- "nextobjectid":70,
+ "nextobjectid":72,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.4.3",
@@ -991,7 +1006,7 @@
          "margin":0,
          "name":"objects",
          "spacing":0,
-         "tilecount":18,
+         "tilecount":19,
          "tileheight":120,
          "tiles":[
                 {
@@ -1101,6 +1116,12 @@
                  "image":"..\/..\/RAW\/obj\/sofa-01.png",
                  "imageheight":68,
                  "imagewidth":80
+                }, 
+                {
+                 "id":19,
+                 "image":"..\/..\/RAW\/obj\/stairs-01.png",
+                 "imageheight":64,
+                 "imagewidth":64
                 }],
          "tilewidth":119
         }],
