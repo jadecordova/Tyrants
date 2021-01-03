@@ -1,5 +1,5 @@
 import {Scene} from 'phaser';
-import {CreateWalls, CreateObjects} from './utils';
+import {CreateZones, CreateObjects, InitPlayer} from './utils';
 
 class WorldScene extends Phaser.Scene
 {
@@ -12,7 +12,6 @@ class WorldScene extends Phaser.Scene
 
     create()
     {
-        // var test = this.physics.add.sprite( 100, 100, 'atlas-01', 'lamp-off-01.png' ); 
 
         // Map.
         const map = this.make.tilemap( {key: 'map'} );
@@ -28,24 +27,20 @@ class WorldScene extends Phaser.Scene
         this.physics.world.bounds.width = map.widthInPixels;
         this.physics.world.bounds.height = map.heightInPixels;
 
-        CreateWalls( this, map, 'Collision' );
+        this.walls = CreateZones( this, map, 'Collision' );
         this.lights = CreateObjects( this, map, 'atlas-01', 'Lights' );
         this.items = CreateObjects( this, map, 'atlas-01', 'Objects' );
+        this.actions = CreateZones( this, map, 'Interactions' );
 
         // Player.
-        this.player = this.physics.add.sprite( 200, 200, 'player', 6 );
-        this.player.setCollideWorldBounds( true );
-        this.physics.add.collider( this.player, world );
+        InitPlayer( this );
 
-        // Player hit area.
-        this.player.body.setSize( 36, 24 );
-        this.player.body.setOffset( 14, 36 );
-
+        // Collisions.
+        this.physics.add.overlap( this.player, this.actions, false, false, this );
         this.physics.add.collider( this.player, this.walls, false, false, this );
-
         this.items.forEach( element =>
         {
-            this.physics.add.collider( this.player, element, this.CollisionHandler, false, this );
+            this.physics.add.collider( this.player, element, false, false, this );
         } );
 
         // Forefront layer.
@@ -53,6 +48,25 @@ class WorldScene extends Phaser.Scene
         // By creating this layer AFTER the player, its elements will appear above the player.
         var above = map.createStaticLayer( 'Above', tiles, 0, 0 );
 
+
+        var keyObj = this.input.keyboard.addKey( 'Enter' );  // Get key object
+        keyObj.on( 'down', event =>
+        {
+            let offset = this.player.body.offset;
+            let bounds = this.player.getBounds();
+            let player = new Phaser.Geom.Rectangle( bounds.x + offset.x, bounds.y + offset.y, bounds.width - offset.x * 2, bounds.height - offset.y );
+
+            const activeObject = this.actions.getChildren().filter( zone =>
+            {
+                const rect = zone.getBounds();
+                return Phaser.Geom.Rectangle.Overlaps( player, rect );
+            } )
+            if ( activeObject.length )
+            {
+                console.log( activeObject[0].message );
+            }
+
+        } );
 
         // Input.
         this.cursors = this.input.keyboard.createCursorKeys();
@@ -110,9 +124,9 @@ class WorldScene extends Phaser.Scene
         */
     }
 
-    CollisionHandler( player, item )
+    ActionsHandler( player, object )
     {
-        console.log( item );
+        console.log( object.message );
     }
 
     wake()

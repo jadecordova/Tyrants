@@ -4,8 +4,7 @@
     {
      "export":
         {
-         "format":"json",
-         "target":"level-01.json"
+         "format":"json"
         }
     },
  "height":18,
@@ -974,86 +973,9 @@
          "visible":true,
          "x":0,
          "y":0
-        }, 
-        {
-         "draworder":"topdown",
-         "id":7,
-         "name":"Interactions",
-         "objects":[
-                {
-                 "height":16.25,
-                 "id":72,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"direction",
-                         "type":"string",
-                         "value":"right"
-                        }, 
-                        {
-                         "name":"message",
-                         "type":"string",
-                         "value":"An old sofa. Looks ruined and unstable. Probably not a good idea to sit on it."
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":9.5,
-                 "x":175.25,
-                 "y":128.75
-                }, 
-                {
-                 "height":9.5,
-                 "id":73,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"direction",
-                         "type":"string",
-                         "value":"up"
-                        }, 
-                        {
-                         "name":"message",
-                         "type":"string",
-                         "value":"An old sofa. Looks ruined and unstable. Probably not a good idea to sit on it."
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":79,
-                 "x":185.25,
-                 "y":146.25
-                }, 
-                {
-                 "height":16.25,
-                 "id":74,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"direction",
-                         "type":"string",
-                         "value":"left"
-                        }, 
-                        {
-                         "name":"message",
-                         "type":"string",
-                         "value":"An old sofa. Looks ruined and unstable. Probably not a good idea to sit on it."
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":7.25,
-                 "x":265,
-                 "y":128.75
-                }],
-         "opacity":1,
-         "type":"objectgroup",
-         "visible":true,
-         "x":0,
-         "y":0
         }],
- "nextlayerid":8,
- "nextobjectid":75,
+ "nextlayerid":7,
+ "nextobjectid":72,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.4.3",
