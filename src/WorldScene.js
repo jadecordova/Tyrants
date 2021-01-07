@@ -48,8 +48,24 @@ class WorldScene extends Phaser.Scene
         // By creating this layer AFTER the player, its elements will appear above the player.
         var above = map.createStaticLayer( 'Above', tiles, 0, 0 );
 
+        this.graphics = this.add.graphics();
 
-        var keyObj = this.input.keyboard.addKey( 'Enter' );  // Get key object
+
+        // Black image (1px) to darken scenne.
+        // Must scale it to cover the whole world.
+        let darkness = this.add.image( 0, 0, 'black' ).setOrigin( 0, 0 ).setScale( this.physics.world.bounds.width, this.physics.world.bounds.height ).setAlpha( 0.85 );
+
+        this.spotlight = this.make.sprite( {
+            x: this.player.x,
+            y: this.player.y,
+            key: 'mask',
+            add: false
+        } );
+        darkness.mask = new Phaser.Display.Masks.BitmapMask( this, this.spotlight );
+        darkness.mask.invertAlpha = true;
+
+        var keyObj = this.input.keyboard.addKey( 'Space' );  // Get key object
+
         keyObj.on( 'down', event =>
         {
             let offset = this.player.body.offset;
@@ -122,6 +138,13 @@ class WorldScene extends Phaser.Scene
                 this.physics.add.overlap( this.player, this.spawns, this.onMeetEnemy, false, this );
         this.sys.events.on( 'wake', this.wake, this );
         */
+        const test1 = this.add.bitmapText( 400, 50, 'textFont', 'Valerie girl' ).setOrigin( 0.5 ).setScale( 0.75 );
+        /*
+        this.add.text( 128, 128, 'This is a test.', {
+            fontFamily: 'textFont',
+            fontSize: 24
+        } );
+        */
     }
 
     ActionsHandler( player, object )
@@ -168,6 +191,9 @@ class WorldScene extends Phaser.Scene
         {
             this.player.anims.stop();
         }
+
+        this.spotlight.x = this.player.x;
+        this.spotlight.y = this.player.y;
     }
 
     onMeetEnemy( player, zone )
@@ -182,6 +208,8 @@ class WorldScene extends Phaser.Scene
         // switch to BattleScene
         this.scene.switch( 'BattleScene' );
     }
+
+
 }
 
 export default WorldScene;

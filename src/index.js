@@ -4,21 +4,23 @@ import WorldScene from './WorldScene';
 import BattleScene from './BattleScene';
 import UIScene from './UIScene';
 
+
 const config = {
     type: Phaser.AUTO,
     parent: 'content',
-    width: 800,
-    height: 600,
+    width: window.innerWidth,
+    height: window.innerHeight,
     zoom: 1,
     pixelArt: true,
     roundPixels: true,
+    backgroundColor: '1c1c1c',
     physics: {
         default: 'arcade',
         arcade: {
             gravity: {
                 y: 0
             },
-            debug: true
+            debug: false
         }
     }
     ,
