@@ -8,8 +8,8 @@ import UIScene from './UIScene';
 const config = {
     type: Phaser.AUTO,
     parent: 'content',
-    width: window.innerWidth,
-    height: window.innerHeight,
+    width: window.innerWidth - 15,
+    height: window.innerHeight - 15,
     zoom: 1,
     pixelArt: true,
     roundPixels: true,

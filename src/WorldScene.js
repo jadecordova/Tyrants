@@ -1,5 +1,6 @@
 import {Scene} from 'phaser';
 import {CreateZones, CreateObjects, InitPlayer} from './utils';
+import Message from './Message';
 
 class WorldScene extends Phaser.Scene
 {
@@ -64,6 +65,9 @@ class WorldScene extends Phaser.Scene
         darkness.mask = new Phaser.Display.Masks.BitmapMask( this, this.spotlight );
         darkness.mask.invertAlpha = true;
 
+        // Create message object.
+        const message = new Message( this, map.widthInPixels, map.heightInPixels )
+
         var keyObj = this.input.keyboard.addKey( 'Space' );  // Get key object
 
         keyObj.on( 'down', event =>
@@ -77,12 +81,13 @@ class WorldScene extends Phaser.Scene
                 const rect = zone.getBounds();
                 return Phaser.Geom.Rectangle.Overlaps( player, rect );
             } )
-            if ( activeObject.length )
+            if ( activeObject.length === 1 )
             {
-                console.log( activeObject[0].message );
+                message.showMessage( activeObject[0].message );
             }
 
         } );
+
 
         // Input.
         this.cursors = this.input.keyboard.createCursorKeys();
@@ -138,7 +143,6 @@ class WorldScene extends Phaser.Scene
                 this.physics.add.overlap( this.player, this.spawns, this.onMeetEnemy, false, this );
         this.sys.events.on( 'wake', this.wake, this );
         */
-        const test1 = this.add.bitmapText( 400, 50, 'textFont', 'Valerie girl' ).setOrigin( 0.5 ).setScale( 0.75 );
         /*
         this.add.text( 128, 128, 'This is a test.', {
             fontFamily: 'textFont',
@@ -149,7 +153,7 @@ class WorldScene extends Phaser.Scene
 
     ActionsHandler( player, object )
     {
-        console.log( object.message );
+        const m = new Message( this, object.message );
     }
 
     wake()
