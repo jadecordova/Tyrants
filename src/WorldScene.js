@@ -66,24 +66,38 @@ class WorldScene extends Phaser.Scene
         darkness.mask.invertAlpha = true;
 
         // Create message object.
-        const message = new Message( this, map.widthInPixels, map.heightInPixels )
+        this.message = new Message( this, map.widthInPixels, map.heightInPixels )
 
+
+        // Check for space key down.
         var keyObj = this.input.keyboard.addKey( 'Space' );  // Get key object
 
         keyObj.on( 'down', event =>
         {
+
+            // Hide message.
+            if ( this.message.active )
+            {
+                this.message.hideMessage();
+            }
+
+            // Construct the actual collision zone for the player.
             let offset = this.player.body.offset;
             let bounds = this.player.getBounds();
             let player = new Phaser.Geom.Rectangle( bounds.x + offset.x, bounds.y + offset.y, bounds.width - offset.x * 2, bounds.height - offset.y );
 
+            // Check for zone overlap.
             const activeObject = this.actions.getChildren().filter( zone =>
             {
                 const rect = zone.getBounds();
                 return Phaser.Geom.Rectangle.Overlaps( player, rect );
             } )
+
+            // Messages and actions.
             if ( activeObject.length === 1 )
             {
-                message.showMessage( activeObject[0].message );
+
+                this.message.showMessage( activeObject[0].message );
             }
 
         } );
@@ -170,20 +184,24 @@ class WorldScene extends Phaser.Scene
         // Horizontal movement
         if ( this.cursors.left.isDown )
         {
+            this.message.hideMessage();
             this.player.body.setVelocityX( -80 );
             this.player.anims.play( 'left', true );
         } else if ( this.cursors.right.isDown )
         {
+            this.message.hideMessage();
             this.player.body.setVelocityX( 80 );
             this.player.anims.play( 'right', true );
         }
         // Vertical movement
         if ( this.cursors.up.isDown )
         {
+            this.message.hideMessage();
             this.player.body.setVelocityY( -80 );
             this.player.anims.play( 'up', true );
         } else if ( this.cursors.down.isDown )
         {
+            this.message.hideMessage();
             this.player.body.setVelocityY( 80 );
             this.player.anims.play( 'down', true );
         }

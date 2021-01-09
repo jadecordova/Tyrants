@@ -16,6 +16,7 @@ export default class Message extends Phaser.GameObjects.Container
         this.rectHeight = 80;
         this.textOriginX = this.rectOriginX + this.textPadding;
         this.textOriginY = this.rectOriginY + this.textPadding;
+        this.active = false;
 
         var graphics = this.scene.add.graphics();
 
@@ -40,7 +41,7 @@ export default class Message extends Phaser.GameObjects.Container
     {
         this.text.setText( text );
         this.visible = true;
-        console.log( this.text.getTextBounds( true ) );
+        this.active = true;
         /*
         if ( this.hideEvent )
             this.hideEvent.remove( false );
@@ -51,5 +52,6 @@ export default class Message extends Phaser.GameObjects.Container
     {
         // this.hideEvent = null;
         this.visible = false;
+        this.active = false;
     }
 }
