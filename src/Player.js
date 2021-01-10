@@ -3,14 +3,15 @@ import Unit from './Unit';
 
 export default class Player extends Unit
 {
-    constructor( scene, x, y, texture, frame, type, hp, damage )
+    constructor( config )
     {
-        super( scene, x, y, texture, frame, type, hp, damage );
+        super( config );
 
         this.weapon = null;
         this.armor = null;
         this.magic = null;
-
+        this.gold = 0;
+        this.experience = 0;
     }
 
 }

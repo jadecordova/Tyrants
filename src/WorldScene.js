@@ -1,6 +1,7 @@
 import {Scene} from 'phaser';
 import {CreateZones, CreateObjects, InitPlayer} from './utils';
 import Message from './Message';
+import Player from './Player';
 
 class WorldScene extends Phaser.Scene
 {
@@ -34,7 +35,20 @@ class WorldScene extends Phaser.Scene
         this.actions = CreateZones( this, map, 'Interactions' );
 
         // Player.
-        InitPlayer( this );
+        this.player = new Player( {
+            scene: this,
+            x: 200,
+            y: 200,
+            texture: 'player',
+            frame: 6,
+            type: 'heroe',
+            hp: 50,
+            damage: 5,
+            width: 36,
+            height: 24,
+            offsetX: 14,
+            offsetY: 36
+        } );
 
         // Collisions.
         this.physics.add.overlap( this.player, this.actions, false, false, this );
