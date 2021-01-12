@@ -1,5 +1,5 @@
 import {Scene} from 'phaser';
-import {CreateZones, CreateObjects, InitPlayer} from './utils';
+import * as Utils from './utils';
 import Message from './Message';
 import Player from './Player';
 
@@ -15,6 +15,7 @@ class WorldScene extends Phaser.Scene
     create()
     {
 
+        //------------------------------------------------------------------------------------------------ WORLD LOWER LAYERS
         // Map.
         const map = this.make.tilemap( {key: 'map'} );
 
@@ -29,18 +30,19 @@ class WorldScene extends Phaser.Scene
         this.physics.world.bounds.width = map.widthInPixels;
         this.physics.world.bounds.height = map.heightInPixels;
 
-        this.walls = CreateZones( this, map, 'Collision' );
-        this.lights = CreateObjects( this, map, 'atlas-01', 'Lights' );
-        this.items = CreateObjects( this, map, 'atlas-01', 'Objects' );
-        this.actions = CreateZones( this, map, 'Interactions' );
+        this.walls = Utils.CreateZones( this, map, 'Collision' );
+        this.lights = Utils.CreateObjects( this, map, 'atlas-01', 'Lights' );
+        this.items = Utils.CreateObjects( this, map, 'atlas-01', 'Objects' );
+        this.actions = Utils.CreateZones( this, map, 'Interactions' );
 
+        //------------------------------------------------------------------------------------------------ GIRL
         // Player.
-        this.player = new Player( {
+        this.girl = new Player( {
             scene: this,
             x: 200,
             y: 200,
-            texture: 'player',
-            frame: 6,
+            texture: 'girl',
+            frame: 0,
             type: 'heroe',
             hp: 50,
             damage: 5,
@@ -50,42 +52,28 @@ class WorldScene extends Phaser.Scene
             offsetY: 36
         } );
 
+        // Animation.
+        Utils.CreateAnimations( this, 'girl' );
+
+        //------------------------------------------------------------------------------------------------ COLLISION
         // Collisions.
-        this.physics.add.overlap( this.player, this.actions, false, false, this );
-        this.physics.add.collider( this.player, this.walls, false, false, this );
+        this.physics.add.overlap( this.girl, this.actions, false, false, this );
+        this.physics.add.collider( this.girl, this.walls, false, false, this );
         this.items.forEach( element =>
         {
-            this.physics.add.collider( this.player, element, false, false, this );
+            this.physics.add.collider( this.girl, element, false, false, this );
         } );
 
-        // Forefront layer.
+        //------------------------------------------------------------------------------------------------ WORLD UPPER LAYER
         // The layers are drawn in the order they are created.
         // By creating this layer AFTER the player, its elements will appear above the player.
         var above = map.createStaticLayer( 'Above', tiles, 0, 0 );
 
-        this.graphics = this.add.graphics();
-
-
-        // Black image (1px) to darken scenne.
-        // Must scale it to cover the whole world.
-        let darkness = this.add.image( 0, 0, 'black' ).setOrigin( 0, 0 ).setScale( this.physics.world.bounds.width, this.physics.world.bounds.height ).setAlpha( 0.85 );
-
-        this.spotlight = this.make.sprite( {
-            x: this.player.x,
-            y: this.player.y,
-            key: 'mask',
-            add: false
-        } );
-        darkness.mask = new Phaser.Display.Masks.BitmapMask( this, this.spotlight );
-        darkness.mask.invertAlpha = true;
-
-        // Create message object.
-        this.message = new Message( this, map.widthInPixels, map.heightInPixels )
-
-
-        // Check for space key down.
+        //------------------------------------------------------------------------------------------------ INPUT
+        this.cursors = this.input.keyboard.createCursorKeys();
         var keyObj = this.input.keyboard.addKey( 'Space' );  // Get key object
 
+        // Check for space key down.
         keyObj.on( 'down', event =>
         {
 
@@ -96,8 +84,8 @@ class WorldScene extends Phaser.Scene
             }
 
             // Construct the actual collision zone for the player.
-            let offset = this.player.body.offset;
-            let bounds = this.player.getBounds();
+            let offset = this.girl.body.offset;
+            let bounds = this.girl.getBounds();
             let player = new Phaser.Geom.Rectangle( bounds.x + offset.x, bounds.y + offset.y, bounds.width - offset.x * 2, bounds.height - offset.y );
 
             // Check for zone overlap.
@@ -116,47 +104,29 @@ class WorldScene extends Phaser.Scene
 
         } );
 
-
-        // Input.
-        this.cursors = this.input.keyboard.createCursorKeys();
-        // Camera.
+        //------------------------------------------------------------------------------------------------ CAMERA
         this.cameras.main.setBounds( 0, 0, map.widthInPixels, map.heightInPixels );
-        this.cameras.main.startFollow( this.player );
+        this.cameras.main.startFollow( this.girl );
         this.cameras.main.roundPixels = true;
 
-        // Animation.
-        this.anims.create( {
-            key: 'down',
-            frames: this.anims.generateFrameNumbers( 'player', {
-                frames: [0, 1, 2, 3, 4, 5, 6, 7]
-            } ),
-            frameRate: 10,
-            repeat: -1
+        //------------------------------------------------------------------------------------------------ DARKNESS
+        // Black image (1px) to darken scenne.
+        // Must scale it to cover the whole world.
+        let darkness = this.add.image( 0, 0, 'black' ).setOrigin( 0, 0 ).setScale( this.physics.world.bounds.width, this.physics.world.bounds.height ).setAlpha( 0.85 );
+
+        this.spotlight = this.make.sprite( {
+            x: this.girl.x,
+            y: this.girl.y,
+            key: 'mask',
+            add: false
         } );
-        this.anims.create( {
-            key: 'up',
-            frames: this.anims.generateFrameNumbers( 'player', {
-                frames: [8, 9, 10, 11, 12, 13, 14, 15]
-            } ),
-            frameRate: 10,
-            repeat: -1
-        } );
-        this.anims.create( {
-            key: 'right',
-            frames: this.anims.generateFrameNumbers( 'player', {
-                frames: [16, 17, 18, 19, 20, 21, 22, 23]
-            } ),
-            frameRate: 10,
-            repeat: -1
-        } );
-        this.anims.create( {
-            key: 'left',
-            frames: this.anims.generateFrameNumbers( 'player', {
-                frames: [24, 25, 26, 27, 28, 29, 30, 31]
-            } ),
-            frameRate: 10,
-            repeat: -1
-        } );
+        darkness.mask = new Phaser.Display.Masks.BitmapMask( this, this.spotlight );
+        darkness.mask.invertAlpha = true;
+
+        // Create message object.
+        this.message = new Message( this, map.widthInPixels, map.heightInPixels )
+
+
         /*
                 this.spawns = this.physics.add.group( {
                     classType: Phaser.GameObjects.Zone
@@ -194,30 +164,30 @@ class WorldScene extends Phaser.Scene
 
     update( time, delta )
     {
-        this.player.body.setVelocity( 0 );
+        this.girl.body.setVelocity( 0 );
         // Horizontal movement
         if ( this.cursors.left.isDown )
         {
             this.message.hideMessage();
-            this.player.body.setVelocityX( -80 );
-            this.player.anims.play( 'left', true );
+            this.girl.body.setVelocityX( -80 );
+            this.girl.anims.play( 'left', true );
         } else if ( this.cursors.right.isDown )
         {
             this.message.hideMessage();
-            this.player.body.setVelocityX( 80 );
-            this.player.anims.play( 'right', true );
+            this.girl.body.setVelocityX( 80 );
+            this.girl.anims.play( 'right', true );
         }
         // Vertical movement
         if ( this.cursors.up.isDown )
         {
             this.message.hideMessage();
-            this.player.body.setVelocityY( -80 );
-            this.player.anims.play( 'up', true );
+            this.girl.body.setVelocityY( -80 );
+            this.girl.anims.play( 'up', true );
         } else if ( this.cursors.down.isDown )
         {
             this.message.hideMessage();
-            this.player.body.setVelocityY( 80 );
-            this.player.anims.play( 'down', true );
+            this.girl.body.setVelocityY( 80 );
+            this.girl.anims.play( 'down', true );
         }
 
         if ( !this.cursors.up.isDown &&
@@ -225,11 +195,11 @@ class WorldScene extends Phaser.Scene
             !this.cursors.right.isDown &&
             !this.cursors.left.isDown )
         {
-            this.player.anims.stop();
+            this.girl.anims.stop();
         }
 
-        this.spotlight.x = this.player.x;
-        this.spotlight.y = this.player.y;
+        this.spotlight.x = this.girl.x;
+        this.spotlight.y = this.girl.y;
     }
 
     onMeetEnemy( player, zone )

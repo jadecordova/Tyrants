@@ -95,19 +95,45 @@ function AssignProperties( prop )
 
 
 /*----------------------------------------------------------------------------------------------------------------------------------------------------------------
-Creates player for current scene.
+Creates animations.
 @scene: the current scene.
+@imageKey: image to load frames from.
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-function InitPlayer( scene )
+function CreateAnimations( scene, imageKey )
 {
-    scene.player = scene.physics.add.sprite( 200, 200, 'player', 6 );
-    scene.player.setCollideWorldBounds( true );
-
-    // Player hit area.
-    scene.player.body.setSize( 36, 24 );
-    scene.player.body.setOffset( 14, 36 );
-
+    scene.anims.create( {
+        key: 'down',
+        frames: scene.anims.generateFrameNumbers( imageKey, {
+            frames: [1, 2, 3, 4, 5, 6, 7, 8]
+        } ),
+        frameRate: 10,
+        repeat: -1
+    } );
+    scene.anims.create( {
+        key: 'up',
+        frames: scene.anims.generateFrameNumbers( imageKey, {
+            frames: [10, 11, 12, 13, 14, 15, 16, 17]
+        } ),
+        frameRate: 10,
+        repeat: -1
+    } );
+    scene.anims.create( {
+        key: 'right',
+        frames: scene.anims.generateFrameNumbers( imageKey, {
+            frames: [19, 20, 21, 22, 23, 24, 25, 26]
+        } ),
+        frameRate: 10,
+        repeat: -1
+    } );
+    scene.anims.create( {
+        key: 'left',
+        frames: scene.anims.generateFrameNumbers( imageKey, {
+            frames: [28, 29, 30, 31, 32, 33, 34, 35]
+        } ),
+        frameRate: 10,
+        repeat: -1
+    } );
 }
 
 
-export {CreateZones, CreateObjects, InitPlayer};
+export {CreateZones, CreateObjects, CreateAnimations};

@@ -18,16 +18,9 @@ export default class Message extends Phaser.GameObjects.Container
         this.textOriginY = this.rectOriginY + this.textPadding;
         this.active = false;
 
-        var graphics = this.scene.add.graphics();
-
-        // If you don't do this, the rectangle will appear when constructed...
-        this.add( graphics );
-
-        graphics.lineStyle( 1, 0xffffff, 0.8 );
-        graphics.fillStyle( 0x031f4c, 0.3 );
-        graphics.strokeRect( this.rectOriginX, this.rectOriginY, this.rectWidth, this.rectHeight );
-        graphics.fillRect( this.rectOriginX, this.rectOriginY, this.rectWidth, this.rectHeight );
-
+        this.background = scene.add.image( this.screenWidth / 2, this.screenHeight / 2, 'dialog' );
+        this.background.alpha = 0.7;
+        this.add( this.background );
         //map.widthInPixels
         this.text = scene.add.bitmapText( this.textOriginX, this.textOriginY, 'textFont', '' ).setOrigin( 0.5 ).setScale( 0.5 );
         this.add( this.text );

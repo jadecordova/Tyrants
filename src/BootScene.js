@@ -17,11 +17,12 @@ class BootScene extends Phaser.Scene
         this.load.image( 'tiles', 'assets/tiles/level-01.png' );
         this.load.tilemapTiledJSON( 'map', 'assets/tilemaps/level-01.json' );
 
-        this.load.spritesheet( 'player', 'assets/characters/cellist.png', {frameWidth: 64, frameHeight: 64} );
+        this.load.spritesheet( 'girl', 'assets/characters/girl.png', {frameWidth: 64, frameHeight: 64} );
 
         // Images.
         this.load.image( 'mask', 'assets/images/lightmask.png' );
         this.load.image( 'black', 'assets/images/black.png' );
+        this.load.image( 'dialog', 'assets/images/dialog.png' );
 
         // Fonts.
         this.load.bitmapFont( 'textFont', 'assets/fonts/textFont4_0.png', 'assets/fonts/textFont4.fnt' );
