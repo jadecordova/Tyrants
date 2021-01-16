@@ -1,6 +1,6 @@
 import {Scene} from 'phaser';
 import * as Utils from './utils';
-import Message from './Message';
+//import Message from './Message';
 import Player from './Player';
 
 class WorldScene extends Phaser.Scene
@@ -8,12 +8,16 @@ class WorldScene extends Phaser.Scene
     constructor()
     {
         super( {key: 'WorldScene'} );
+
+        this.dialog;
     }
 
     preload() { }
 
     create()
     {
+
+        this.dialog = this.scene.get( 'Message' );
 
         //------------------------------------------------------------------------------------------------ WORLD LOWER LAYERS
         // Map.
@@ -77,12 +81,6 @@ class WorldScene extends Phaser.Scene
         keyObj.on( 'down', event =>
         {
 
-            // Hide message.
-            if ( this.message.active )
-            {
-                this.message.hideMessage();
-            }
-
             // Construct the actual collision zone for the player.
             let offset = this.girl.body.offset;
             let bounds = this.girl.getBounds();
@@ -98,10 +96,9 @@ class WorldScene extends Phaser.Scene
             // Messages and actions.
             if ( activeObject.length === 1 )
             {
-
-                this.message.showMessage( activeObject[0].message );
+                this.scene.pause( 'WorldScene' );
+                this.scene.run( 'Message', {text: activeObject[0].message} );
             }
-
         } );
 
         //------------------------------------------------------------------------------------------------ CAMERA
@@ -124,7 +121,7 @@ class WorldScene extends Phaser.Scene
         darkness.mask.invertAlpha = true;
 
         // Create message object.
-        this.message = new Message( this, map.widthInPixels, map.heightInPixels )
+        //this.message = new Message( this, map.widthInPixels, map.heightInPixels )
 
 
         /*
@@ -147,6 +144,7 @@ class WorldScene extends Phaser.Scene
             fontSize: 24
         } );
         */
+
     }
 
     ActionsHandler( player, object )
@@ -168,24 +166,24 @@ class WorldScene extends Phaser.Scene
         // Horizontal movement
         if ( this.cursors.left.isDown )
         {
-            this.message.hideMessage();
+            //this.message.hideMessage();
             this.girl.body.setVelocityX( -80 );
             this.girl.anims.play( 'left', true );
         } else if ( this.cursors.right.isDown )
         {
-            this.message.hideMessage();
+            //this.message.hideMessage();
             this.girl.body.setVelocityX( 80 );
             this.girl.anims.play( 'right', true );
         }
         // Vertical movement
         if ( this.cursors.up.isDown )
         {
-            this.message.hideMessage();
+            //this.message.hideMessage();
             this.girl.body.setVelocityY( -80 );
             this.girl.anims.play( 'up', true );
         } else if ( this.cursors.down.isDown )
         {
-            this.message.hideMessage();
+            //this.message.hideMessage();
             this.girl.body.setVelocityY( 80 );
             this.girl.anims.play( 'down', true );
         }

@@ -4,53 +4,11 @@
 			"image": "assets/atlas/objects-01.png",
 			"format": "RGBA8888",
 			"size": {
-				"w": 377,
-				"h": 432
+				"w": 299,
+				"h": 298
 			},
 			"scale": 1,
 			"frames": [
-				{
-					"filename": "no.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 339,
-						"h": 103
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 339,
-						"h": 103
-					},
-					"frame": {
-						"x": 0,
-						"y": 0,
-						"w": 339,
-						"h": 103
-					}
-				},
-				{
-					"filename": "yes.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 339,
-						"h": 103
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 339,
-						"h": 103
-					},
-					"frame": {
-						"x": 0,
-						"y": 103,
-						"w": 339,
-						"h": 103
-					}
-				},
 				{
 					"filename": "cabinet-01.png",
 					"rotated": false,
@@ -67,7 +25,7 @@
 					},
 					"frame": {
 						"x": 0,
-						"y": 206,
+						"y": 0,
 						"w": 119,
 						"h": 120
 					}
@@ -88,7 +46,7 @@
 					},
 					"frame": {
 						"x": 119,
-						"y": 206,
+						"y": 0,
 						"w": 73,
 						"h": 120
 					}
@@ -108,31 +66,10 @@
 						"h": 73
 					},
 					"frame": {
-						"x": 192,
-						"y": 206,
+						"x": 0,
+						"y": 120,
 						"w": 118,
 						"h": 73
-					}
-				},
-				{
-					"filename": "kitchen-04.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 35,
-						"h": 106
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 35,
-						"h": 106
-					},
-					"frame": {
-						"x": 0,
-						"y": 326,
-						"w": 35,
-						"h": 106
 					}
 				},
 				{
@@ -150,8 +87,8 @@
 						"h": 105
 					},
 					"frame": {
-						"x": 35,
-						"y": 326,
+						"x": 192,
+						"y": 0,
 						"w": 76,
 						"h": 105
 					}
@@ -171,8 +108,8 @@
 						"h": 101
 					},
 					"frame": {
-						"x": 111,
-						"y": 326,
+						"x": 192,
+						"y": 105,
 						"w": 67,
 						"h": 101
 					}
@@ -192,10 +129,31 @@
 						"h": 68
 					},
 					"frame": {
-						"x": 178,
-						"y": 326,
+						"x": 0,
+						"y": 193,
 						"w": 80,
 						"h": 68
+					}
+				},
+				{
+					"filename": "stair-01.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 64,
+						"h": 64
+					},
+					"frame": {
+						"x": 80,
+						"y": 193,
+						"w": 64,
+						"h": 64
 					}
 				},
 				{
@@ -213,10 +171,31 @@
 						"h": 49
 					},
 					"frame": {
-						"x": 258,
-						"y": 279,
+						"x": 144,
+						"y": 206,
 						"w": 78,
 						"h": 49
+					}
+				},
+				{
+					"filename": "kitchen-04.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 35,
+						"h": 106
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 35,
+						"h": 106
+					},
+					"frame": {
+						"x": 259,
+						"y": 105,
+						"w": 35,
+						"h": 106
 					}
 				},
 				{
@@ -234,8 +213,8 @@
 						"h": 48
 					},
 					"frame": {
-						"x": 258,
-						"y": 328,
+						"x": 222,
+						"y": 211,
 						"w": 77,
 						"h": 48
 					}
@@ -255,31 +234,10 @@
 						"h": 65
 					},
 					"frame": {
-						"x": 339,
-						"y": 0,
+						"x": 144,
+						"y": 120,
 						"w": 38,
 						"h": 65
-					}
-				},
-				{
-					"filename": "stairs-01.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 64,
-						"h": 64
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 64,
-						"h": 64
-					},
-					"frame": {
-						"x": 310,
-						"y": 206,
-						"w": 64,
-						"h": 64
 					}
 				},
 				{
@@ -297,31 +255,10 @@
 						"h": 55
 					},
 					"frame": {
-						"x": 258,
-						"y": 376,
+						"x": 268,
+						"y": 0,
 						"w": 30,
 						"h": 55
-					}
-				},
-				{
-					"filename": "kitchen-03.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 47,
-						"h": 24
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 47,
-						"h": 24
-					},
-					"frame": {
-						"x": 178,
-						"y": 394,
-						"w": 47,
-						"h": 24
 					}
 				},
 				{
@@ -339,10 +276,52 @@
 						"h": 42
 					},
 					"frame": {
-						"x": 336,
-						"y": 270,
+						"x": 144,
+						"y": 255,
 						"w": 39,
 						"h": 42
+					}
+				},
+				{
+					"filename": "kitchen-03.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 47,
+						"h": 24
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 47,
+						"h": 24
+					},
+					"frame": {
+						"x": 80,
+						"y": 257,
+						"w": 47,
+						"h": 24
+					}
+				},
+				{
+					"filename": "chair-01.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 23,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 23,
+						"h": 32
+					},
+					"frame": {
+						"x": 268,
+						"y": 55,
+						"w": 23,
+						"h": 32
 					}
 				},
 				{
@@ -360,8 +339,8 @@
 						"h": 41
 					},
 					"frame": {
-						"x": 192,
-						"y": 279,
+						"x": 127,
+						"y": 257,
 						"w": 16,
 						"h": 41
 					}
@@ -381,31 +360,10 @@
 						"h": 41
 					},
 					"frame": {
-						"x": 208,
-						"y": 279,
+						"x": 118,
+						"y": 120,
 						"w": 16,
 						"h": 41
-					}
-				},
-				{
-					"filename": "chair-01.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 23,
-						"h": 32
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 23,
-						"h": 32
-					},
-					"frame": {
-						"x": 225,
-						"y": 394,
-						"w": 23,
-						"h": 32
 					}
 				},
 				{
@@ -423,8 +381,8 @@
 						"h": 21
 					},
 					"frame": {
-						"x": 224,
-						"y": 279,
+						"x": 118,
+						"y": 161,
 						"w": 22,
 						"h": 21
 					}
@@ -444,8 +402,8 @@
 						"h": 21
 					},
 					"frame": {
-						"x": 224,
-						"y": 300,
+						"x": 144,
+						"y": 185,
 						"w": 22,
 						"h": 21
 					}
@@ -465,8 +423,8 @@
 						"h": 21
 					},
 					"frame": {
-						"x": 339,
-						"y": 65,
+						"x": 166,
+						"y": 185,
 						"w": 20,
 						"h": 21
 					}

@@ -2,7 +2,7 @@ import 'phaser';
 import BootScene from './BootScene';
 import WorldScene from './WorldScene';
 import BattleScene from './BattleScene';
-import UIScene from './UIScene';
+import Message from './Message';
 
 
 const config = {
@@ -28,7 +28,7 @@ const config = {
         BootScene,
         WorldScene,
         BattleScene,
-        UIScene
+        Message
     ]
 };
 

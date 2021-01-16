@@ -24,9 +24,6 @@ class BootScene extends Phaser.Scene
         this.load.image( 'black', 'assets/images/black.png' );
         this.load.image( 'dialog', 'assets/images/dialog.png' );
 
-        // Fonts.
-        this.load.bitmapFont( 'textFont', 'assets/fonts/textFont4_0.png', 'assets/fonts/textFont4.fnt' );
-
     }
 
     create()

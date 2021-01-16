@@ -1,50 +1,116 @@
-import 'phaser';
+import {Scene} from 'phaser';
 
-export default class Message extends Phaser.GameObjects.Container
+class Message extends Phaser.Scene
 {
-
-    constructor( scene, width, height )
+    constructor()
     {
-        super( scene, 0, 0 );
+        super( {key: 'Message'} );
 
-        this.textPadding = 10;
-        this.screenWidth = window.innerWidth;
-        this.screenHeight = window.innerHeight;
-        this.rectOriginX = 20;
-        this.rectOriginY = this.screenHeight - 120;
-        this.rectWidth = this.screenWidth - 50;
-        this.rectHeight = 80;
-        this.textOriginX = this.rectOriginX + this.textPadding;
-        this.textOriginY = this.rectOriginY + this.textPadding;
-        this.active = false;
-
-        this.background = scene.add.image( this.screenWidth / 2, this.screenHeight / 2, 'dialog' );
-        this.background.alpha = 0.7;
-        this.add( this.background );
-        //map.widthInPixels
-        this.text = scene.add.bitmapText( this.textOriginX, this.textOriginY, 'textFont', '' ).setOrigin( 0.5 ).setScale( 0.5 );
-        this.add( this.text );
-        this.text.setOrigin( 0 );
-        this.visible = false;
-
-        scene.add.existing( this );
+        this.txt;
+        this.message;
     }
 
-    showMessage( text )
+    init( data )
     {
-        this.text.setText( text );
-        this.visible = true;
-        this.active = true;
+        this.txt = data.text;
+    }
+
+    create()
+    {
         /*
-        if ( this.hideEvent )
-            this.hideEvent.remove( false );
-        this.hideEvent = this.scene.time.addEvent( {delay: 2000, callback: this.hideMessage, callbackScope: this} );
+        {
+            fontFamily: 'Courier',
+            fontSize: '16px',
+            fontStyle: '',
+            backgroundColor: null,
+            color: '#fff',
+            stroke: '#fff',
+            strokeThickness: 0,
+            shadow: {
+                offsetX: 0,
+                offsetY: 0,
+                color: '#000',
+                blur: 0,
+                stroke: false,
+                fill: false
+            },
+            align: 'left',  // 'left'|'center'|'right'|'justify'
+            padding: {
+                left: 0,
+                right: 0,
+                top: 0,
+                bottom: 0,
+            },
+            maxLines: 0,
+            lineSpacing: 0,
+            fixedWidth: 0,
+            fixedHeight: 0,
+            rtl: false,
+            testString: '|MÉqgy',
+            wordWrap: {
+                width: null,
+                callback: null,
+                callbackScope: null,
+                useAdvancedWrap: false
+            },
+            metrics: false
+            // metrics: {
+            //     ascent: 0,
+            //     descent: 0,
+            //     fontSize: 0
+            // }
+        }
         */
-    }
-    hideMessage()
-    {
-        // this.hideEvent = null;
-        this.visible = false;
+
+        const style = {
+            fontFamily: 'textFont',
+            fontSize: '24px',
+            color: '#fff',
+            shadow: {
+                offsetX: 5,
+                offsetY: 5,
+                color: '#000',
+                blur: 0.5,
+            },
+            align: 'center',
+            padding: {
+                left: 10,
+                right: 10,
+                top: 10,
+                bottom: 10,
+            },
+            maxLines: 6,
+            wordWrap: {
+                width: 490,
+                useAdvancedWrap: true
+            },
+        }
+
+        this.originX = window.innerWidth / 2;
+        this.originY = window.innerHeight / 2;
         this.active = false;
+
+        this.background = this.add.image( this.originX, this.originY, 'dialog' );
+        this.background.alpha = 0.5;
+
+        this.message = this.add.text( this.originX, this.originY, this.txt, style );
+        this.message.align = 1;
+        this.message.setOrigin( 0.5 );
+
+        var keyObj = this.input.keyboard.addKey( 'Space' );  // Get key object
+
+        // Check for space key down.
+        keyObj.on( 'down', event =>
+        {
+            this.scene.resume( 'WorldScene' );
+            this.scene.sleep( 'Message' );
+        } );
+
+        this.events.on( Phaser.Scenes.Events.WAKE, ( strageThings, data ) =>
+        {
+            this.message.text = data.text;
+        } );
     }
 }
+
+export default Message;
