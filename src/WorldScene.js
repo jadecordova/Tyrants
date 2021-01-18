@@ -1,6 +1,5 @@
 import {Scene} from 'phaser';
 import * as Utils from './utils';
-//import Message from './Message';
 import Player from './Player';
 
 class WorldScene extends Phaser.Scene
@@ -12,15 +11,19 @@ class WorldScene extends Phaser.Scene
         this.dialog;
     }
 
-    preload() { }
+    init()
+    {
+        // Get a reference to the Message scene.
+        this.dialog = this.scene.get( 'Message' );
+
+    }
 
     create()
     {
 
-        this.dialog = this.scene.get( 'Message' );
+
 
         //------------------------------------------------------------------------------------------------ WORLD LOWER LAYERS
-        // Map.
         const map = this.make.tilemap( {key: 'map'} );
 
         // 'tiles' is the name given to the tileset in Tiled.
@@ -38,6 +41,7 @@ class WorldScene extends Phaser.Scene
         this.lights = Utils.CreateObjects( this, map, 'atlas-01', 'Lights' );
         this.items = Utils.CreateObjects( this, map, 'atlas-01', 'Objects' );
         this.actions = Utils.CreateZones( this, map, 'Interactions' );
+
 
         //------------------------------------------------------------------------------------------------ GIRL
         // Player.
@@ -59,8 +63,8 @@ class WorldScene extends Phaser.Scene
         // Animation.
         Utils.CreateAnimations( this, 'girl' );
 
+
         //------------------------------------------------------------------------------------------------ COLLISION
-        // Collisions.
         this.physics.add.overlap( this.girl, this.actions, false, false, this );
         this.physics.add.collider( this.girl, this.walls, false, false, this );
         this.items.forEach( element =>
@@ -68,10 +72,12 @@ class WorldScene extends Phaser.Scene
             this.physics.add.collider( this.girl, element, false, false, this );
         } );
 
+
         //------------------------------------------------------------------------------------------------ WORLD UPPER LAYER
         // The layers are drawn in the order they are created.
         // By creating this layer AFTER the player, its elements will appear above the player.
         var above = map.createStaticLayer( 'Above', tiles, 0, 0 );
+
 
         //------------------------------------------------------------------------------------------------ INPUT
         this.cursors = this.input.keyboard.createCursorKeys();
@@ -93,23 +99,30 @@ class WorldScene extends Phaser.Scene
                 return Phaser.Geom.Rectangle.Overlaps( player, rect );
             } )
 
-            // Messages and actions.
+            // Messages and actions. 
             if ( activeObject.length === 1 )
             {
                 this.scene.pause( 'WorldScene' );
-                this.scene.run( 'Message', {text: activeObject[0].message} );
+                this.scene.run( 'Message', {
+                    text: activeObject[0].message,
+                    action: activeObject[0].action,
+                    parameter: activeObject[0].parameter
+                } );
+                //
             }
         } );
+
 
         //------------------------------------------------------------------------------------------------ CAMERA
         this.cameras.main.setBounds( 0, 0, map.widthInPixels, map.heightInPixels );
         this.cameras.main.startFollow( this.girl );
         this.cameras.main.roundPixels = true;
 
+
         //------------------------------------------------------------------------------------------------ DARKNESS
         // Black image (1px) to darken scenne.
         // Must scale it to cover the whole world.
-        let darkness = this.add.image( 0, 0, 'black' ).setOrigin( 0, 0 ).setScale( this.physics.world.bounds.width, this.physics.world.bounds.height ).setAlpha( 0.85 );
+        let darkness = this.add.image( 0, 0, 'black' ).setOrigin( 0, 0 ).setScale( this.physics.world.bounds.width, this.physics.world.bounds.height ).setAlpha( 0.98 );
 
         this.spotlight = this.make.sprite( {
             x: this.girl.x,
@@ -120,45 +133,18 @@ class WorldScene extends Phaser.Scene
         darkness.mask = new Phaser.Display.Masks.BitmapMask( this, this.spotlight );
         darkness.mask.invertAlpha = true;
 
-        // Create message object.
-        //this.message = new Message( this, map.widthInPixels, map.heightInPixels )
 
-
-        /*
-                this.spawns = this.physics.add.group( {
-                    classType: Phaser.GameObjects.Zone
-                } );
-                for ( var i = 0; i < 10; i++ )
-                {
-                    var x = Phaser.Math.RND.between( 0, this.physics.world.bounds.width );
-                    var y = Phaser.Math.RND.between( 0, this.physics.world.bounds.height );
-                    // parameters are x, y, width, height
-                    this.spawns.create( x, y, 64, 64 );
-                }
-                this.physics.add.overlap( this.player, this.spawns, this.onMeetEnemy, false, this );
-        this.sys.events.on( 'wake', this.wake, this );
-        */
-        /*
-        this.add.text( 128, 128, 'This is a test.', {
-            fontFamily: 'textFont',
-            fontSize: 24
+        //------------------------------------------------------------------------------------------------ EVENTS
+        this.events.on( Phaser.Scenes.Events.RESUME, ( strangeThings, data ) =>
+        {
+            console.log( data.gold );
+            if ( data.action !== undefined )
+            {
+                Utils[data.action]( data.parameter );
+            }
         } );
-        */
-
     }
 
-    ActionsHandler( player, object )
-    {
-        const m = new Message( this, object.message );
-    }
-
-    wake()
-    {
-        this.cursors.left.reset();
-        this.cursors.right.reset();
-        this.cursors.up.reset();
-        this.cursors.down.reset();
-    }
 
     update( time, delta )
     {
@@ -199,21 +185,6 @@ class WorldScene extends Phaser.Scene
         this.spotlight.x = this.girl.x;
         this.spotlight.y = this.girl.y;
     }
-
-    onMeetEnemy( player, zone )
-    {
-        // we move the zone to some other location
-        zone.x = Phaser.Math.RND.between( 0, this.physics.world.bounds.width );
-        zone.y = Phaser.Math.RND.between( 0, this.physics.world.bounds.height );
-
-        // shake the world
-        this.cameras.main.shake( 300 );
-
-        // switch to BattleScene
-        this.scene.switch( 'BattleScene' );
-    }
-
-
 }
 
 export default WorldScene;

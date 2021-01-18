@@ -89,27 +89,27 @@
   <object id="7" name="wall" type="wall" x="1088" y="896" width="192" height="128"/>
   <object id="8" name="wall" type="wall" x="704" y="128" width="64" height="64"/>
   <object id="9" name="wall" type="wall" x="768" y="512" width="128" height="64"/>
-  <object id="10" name="wall" type="wall" x="704" y="704" width="256" height="64"/>
+  <object id="10" name="wall" type="wall" x="704" y="699" width="256" height="69"/>
   <object id="11" name="wall" type="wall" x="960" y="128" width="64" height="768"/>
-  <object id="12" name="wall" type="wall" x="64" y="640" width="192" height="64"/>
-  <object id="13" name="wall" type="wall" x="64" y="384" width="192" height="64"/>
-  <object id="14" name="wall" type="wall" x="320.5" y="384" width="320" height="64"/>
-  <object id="15" name="wall" type="wall" x="320" y="640" width="64" height="64"/>
+  <object id="12" name="wall" type="wall" x="64" y="635" width="192" height="69"/>
+  <object id="13" name="wall" type="wall" x="64" y="379" width="192" height="69"/>
+  <object id="14" name="wall" type="wall" x="320.5" y="379" width="320" height="69"/>
+  <object id="15" name="wall" type="wall" x="320" y="635" width="64" height="69"/>
   <object id="16" name="wall" type="wall" x="64" y="64" width="512" height="64"/>
   <object id="17" name="wall" type="wall" x="0" y="128" width="64" height="768"/>
-  <object id="18" name="wall" type="wall" x="0" y="896" width="768" height="128"/>
+  <object id="18" name="wall" type="wall" x="0" y="891" width="768" height="133"/>
   <object id="19" name="wall" type="wall" x="384" y="640" width="64" height="256"/>
-  <object id="21" name="wall" type="wall" x="768" y="1024" width="256" height="64"/>
-  <object id="23" name="wall" type="wall" x="1344" y="448" width="64" height="640"/>
+  <object id="21" name="wall" type="wall" x="768" y="1019" width="256" height="69"/>
+  <object id="23" name="wall" type="wall" x="1344" y="443" width="64" height="645"/>
   <object id="25" name="wall" type="wall" x="1216" y="256" width="64" height="640"/>
-  <object id="26" name="wall" type="wall" x="1088" y="384" width="64" height="575.5"/>
-  <object id="27" name="wall" type="wall" x="704" y="320" width="64" height="384.5"/>
+  <object id="26" name="wall" type="wall" x="1088" y="379" width="64" height="581"/>
+  <object id="27" name="wall" type="wall" x="704" y="315" width="64" height="389"/>
   <object id="28" name="wall" type="wall" x="576" y="128" width="64" height="256"/>
   <object id="91" name="wall" type="wall" x="1344" y="192" width="384" height="126"/>
-  <object id="92" name="wall" type="wall" x="1408" y="448" width="320" height="64"/>
+  <object id="92" name="wall" type="wall" x="1408" y="443" width="320" height="69"/>
   <object id="93" name="wall" type="wall" x="1664" y="512" width="64" height="256"/>
   <object id="94" name="wall" type="wall" x="1728" y="64" width="320" height="126"/>
-  <object id="95" name="wall" type="wall" x="1728" y="768" width="320" height="126"/>
+  <object id="95" name="wall" type="wall" x="1728" y="763" width="320" height="131"/>
  </objectgroup>
  <objectgroup id="5" name="Lights" locked="1">
   <object id="29" name="light" gid="271" x="148" y="100" width="22" height="21">
@@ -163,7 +163,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="6" name="Objects">
+ <objectgroup id="6" name="Objects" locked="1">
   <object id="39" name="sofa1" gid="275" x="185" y="147" width="80" height="68">
    <properties>
     <property name="image" value="sofa-01.png"/>
@@ -287,6 +287,7 @@
  <objectgroup id="7" name="Interactions">
   <object id="73" x="177.5" y="129.5" width="95" height="26.25">
    <properties>
+    <property name="action" value="Sleep"/>
     <property name="message">An old sofa. Looks ruined and unstable.
 Probably not a good idea to sit on it.</property>
    </properties>
@@ -299,8 +300,9 @@ There is a piece of wood still lit. </property>
   </object>
   <object id="76" x="423.5" y="131.25" width="26.25" height="26">
    <properties>
-    <property name="gold" type="int" value="5"/>
+    <property name="action" value="Gold"/>
     <property name="message" value="You found 5 gold!"/>
+    <property name="parameter" type="int" value="5"/>
    </properties>
   </object>
   <object id="78" x="457.5" y="157.5" width="117.75" height="42.75">
@@ -349,13 +351,15 @@ Those may be all right...</property>
   </object>
   <object id="86" x="771.5" y="321" width="90.5" height="124.5">
    <properties>
+    <property name="action" value="sleep"/>
     <property name="message" value="Do you want to rest here?"/>
    </properties>
   </object>
   <object id="87" x="775.5" y="580" width="45.5" height="37">
    <properties>
-    <property name="gold" type="int" value="10"/>
+    <property name="action" value="Gold"/>
     <property name="message" value=" You found 10 gold!"/>
+    <property name="parameter" type="int" value="10"/>
    </properties>
   </object>
   <object id="88" x="874" y="771.5" width="80" height="44">
@@ -365,13 +369,15 @@ Those may be all right...</property>
   </object>
   <object id="89" x="1154" y="810" width="59" height="19.5">
    <properties>
-    <property name="action" value="GoToLevel(2)"/>
+    <property name="action" value="GoToLevel"/>
+    <property name="parameter" type="int" value="2"/>
    </properties>
   </object>
   <object id="90" x="1294.5" y="258.5" width="41.5" height="34.5">
    <properties>
-    <property name="gold" type="int" value="20"/>
+    <property name="action" value="Gold"/>
     <property name="message" value="Found 20 Gold!"/>
+    <property name="parameter" type="int" value="20"/>
    </properties>
   </object>
  </objectgroup>

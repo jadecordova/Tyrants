@@ -136,7 +136,7 @@
                  "y":512
                 }, 
                 {
-                 "height":64,
+                 "height":69,
                  "id":10,
                  "name":"wall",
                  "rotation":0,
@@ -144,7 +144,7 @@
                  "visible":true,
                  "width":256,
                  "x":704,
-                 "y":704
+                 "y":699
                 }, 
                 {
                  "height":768,
@@ -158,7 +158,7 @@
                  "y":128
                 }, 
                 {
-                 "height":64,
+                 "height":69,
                  "id":12,
                  "name":"wall",
                  "rotation":0,
@@ -166,10 +166,10 @@
                  "visible":true,
                  "width":192,
                  "x":64,
-                 "y":640
+                 "y":635
                 }, 
                 {
-                 "height":64,
+                 "height":69,
                  "id":13,
                  "name":"wall",
                  "rotation":0,
@@ -177,10 +177,10 @@
                  "visible":true,
                  "width":192,
                  "x":64,
-                 "y":384
+                 "y":379
                 }, 
                 {
-                 "height":64,
+                 "height":69,
                  "id":14,
                  "name":"wall",
                  "rotation":0,
@@ -188,10 +188,10 @@
                  "visible":true,
                  "width":320,
                  "x":320.5,
-                 "y":384
+                 "y":379
                 }, 
                 {
-                 "height":64,
+                 "height":69,
                  "id":15,
                  "name":"wall",
                  "rotation":0,
@@ -199,7 +199,7 @@
                  "visible":true,
                  "width":64,
                  "x":320,
-                 "y":640
+                 "y":635
                 }, 
                 {
                  "height":64,
@@ -224,7 +224,7 @@
                  "y":128
                 }, 
                 {
-                 "height":128,
+                 "height":133,
                  "id":18,
                  "name":"wall",
                  "rotation":0,
@@ -232,7 +232,7 @@
                  "visible":true,
                  "width":768,
                  "x":0,
-                 "y":896
+                 "y":891
                 }, 
                 {
                  "height":256,
@@ -246,7 +246,7 @@
                  "y":640
                 }, 
                 {
-                 "height":64,
+                 "height":69,
                  "id":21,
                  "name":"wall",
                  "rotation":0,
@@ -254,10 +254,10 @@
                  "visible":true,
                  "width":256,
                  "x":768,
-                 "y":1024
+                 "y":1019
                 }, 
                 {
-                 "height":640,
+                 "height":645,
                  "id":23,
                  "name":"wall",
                  "rotation":0,
@@ -265,7 +265,7 @@
                  "visible":true,
                  "width":64,
                  "x":1344,
-                 "y":448
+                 "y":443
                 }, 
                 {
                  "height":640,
@@ -279,7 +279,7 @@
                  "y":256
                 }, 
                 {
-                 "height":575.5,
+                 "height":581,
                  "id":26,
                  "name":"wall",
                  "rotation":0,
@@ -287,10 +287,10 @@
                  "visible":true,
                  "width":64,
                  "x":1088,
-                 "y":384
+                 "y":379
                 }, 
                 {
-                 "height":384.5,
+                 "height":389,
                  "id":27,
                  "name":"wall",
                  "rotation":0,
@@ -298,7 +298,7 @@
                  "visible":true,
                  "width":64,
                  "x":704,
-                 "y":320
+                 "y":315
                 }, 
                 {
                  "height":256,
@@ -323,7 +323,7 @@
                  "y":192
                 }, 
                 {
-                 "height":64,
+                 "height":69,
                  "id":92,
                  "name":"wall",
                  "rotation":0,
@@ -331,7 +331,7 @@
                  "visible":true,
                  "width":320,
                  "x":1408,
-                 "y":448
+                 "y":443
                 }, 
                 {
                  "height":256,
@@ -356,7 +356,7 @@
                  "y":64
                 }, 
                 {
-                 "height":126,
+                 "height":131,
                  "id":95,
                  "name":"wall",
                  "rotation":0,
@@ -364,7 +364,7 @@
                  "visible":true,
                  "width":320,
                  "x":1728,
-                 "y":768
+                 "y":763
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1019,6 +1019,11 @@
                  "name":"",
                  "properties":[
                         {
+                         "name":"action",
+                         "type":"string",
+                         "value":"Sleep"
+                        }, 
+                        {
                          "name":"message",
                          "type":"string",
                          "value":"An old sofa. Looks ruined and unstable.\nProbably not a good idea to sit on it."
@@ -1053,14 +1058,19 @@
                  "name":"",
                  "properties":[
                         {
-                         "name":"gold",
-                         "type":"int",
-                         "value":5
+                         "name":"action",
+                         "type":"string",
+                         "value":"Gold"
                         }, 
                         {
                          "name":"message",
                          "type":"string",
                          "value":"You found 5 gold!"
+                        }, 
+                        {
+                         "name":"parameter",
+                         "type":"int",
+                         "value":5
                         }],
                  "rotation":0,
                  "type":"",
@@ -1216,6 +1226,11 @@
                  "name":"",
                  "properties":[
                         {
+                         "name":"action",
+                         "type":"string",
+                         "value":"sleep"
+                        }, 
+                        {
                          "name":"message",
                          "type":"string",
                          "value":"Do you want to rest here?"
@@ -1233,14 +1248,19 @@
                  "name":"",
                  "properties":[
                         {
-                         "name":"gold",
-                         "type":"int",
-                         "value":10
+                         "name":"action",
+                         "type":"string",
+                         "value":"Gold"
                         }, 
                         {
                          "name":"message",
                          "type":"string",
                          "value":" You found 10 gold!"
+                        }, 
+                        {
+                         "name":"parameter",
+                         "type":"int",
+                         "value":10
                         }],
                  "rotation":0,
                  "type":"",
@@ -1274,7 +1294,12 @@
                         {
                          "name":"action",
                          "type":"string",
-                         "value":"GoToLevel(2)"
+                         "value":"GoToLevel"
+                        }, 
+                        {
+                         "name":"parameter",
+                         "type":"int",
+                         "value":2
                         }],
                  "rotation":0,
                  "type":"",
@@ -1289,14 +1314,19 @@
                  "name":"",
                  "properties":[
                         {
-                         "name":"gold",
-                         "type":"int",
-                         "value":20
+                         "name":"action",
+                         "type":"string",
+                         "value":"Gold"
                         }, 
                         {
                          "name":"message",
                          "type":"string",
                          "value":"Found 20 Gold!"
+                        }, 
+                        {
+                         "name":"parameter",
+                         "type":"int",
+                         "value":20
                         }],
                  "rotation":0,
                  "type":"",

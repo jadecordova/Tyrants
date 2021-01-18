@@ -135,5 +135,21 @@ function CreateAnimations( scene, imageKey )
     } );
 }
 
+function Sleep()
+{
+    console.log( 'sleeping' );
+}
 
-export {CreateZones, CreateObjects, CreateAnimations};
+function Gold( quantity )
+{
+    console.log( 'Found ' + quantity + ' gold!' );
+}
+
+export
+{
+    CreateZones,
+    CreateObjects,
+    CreateAnimations,
+    Sleep,
+    Gold
+};
