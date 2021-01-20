@@ -142,10 +142,13 @@ function Sleep()
 
 function Gold( quantity, player )
 {
-    player.scene.coin.setPosition( player.x, player.y );
     player.scene.coin.visible = true;
+    player.scene.coin.setPosition( player.x, player.y );
     player.scene.coin.anims.play( 'coin', true );
     player.scene.coinTween.play();
+    player.scene.coinText.setPosition( player.x, player.y );
+    player.scene.coinText.text = '+' + quantity;
+    player.scene.coinText.visible = true;
 }
 
 function CreateCoin( scene )
@@ -162,10 +165,10 @@ function CreateCoin( scene )
     return coin;
 }
 
-function CreateCoinTween( scene, coin )
+function CreateCoinTween( scene, coin, text )
 {
     let coinTween = scene.tweens.add( {
-        targets: coin,
+        targets: [coin, text],
         repeat: 0,
         props: {
             alpha: {value: 0, duration: 2000, ease: 'Cubic.easeIn'},
@@ -178,6 +181,13 @@ function CreateCoinTween( scene, coin )
     return coinTween;
 }
 
+function CreateCoinText( scene )
+{
+    let txt = scene.add.text( 0, 0, '' );
+    txt.visible = false;
+    return txt;
+}
+
 export
 {
     CreateZones,
@@ -185,6 +195,7 @@ export
     CreateAnimations,
     CreateCoin,
     CreateCoinTween,
+    CreateCoinText,
     Sleep,
     Gold
 };

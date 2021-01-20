@@ -159,7 +159,6 @@ class Message extends Phaser.Scene
             this.action = eventData.action;
             this.parameter = eventData.parameter;
 
-            console.log( 'parameter on wake: ' + eventData.parameter );
             this.setState( 'yes' );
 
             if ( this.action == undefined )

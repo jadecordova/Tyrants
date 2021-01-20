@@ -81,7 +81,8 @@ class WorldScene extends Phaser.Scene
 
         //------------------------------------------------------------------------------------------------ COIN
         this.coin = Utils.CreateCoin( this );
-        this.coinTween = Utils.CreateCoinTween( this, this.coin );
+        this.coinText = Utils.CreateCoinText( this );
+        this.coinTween = Utils.CreateCoinTween( this, this.coin, this.coinText );
 
         //------------------------------------------------------------------------------------------------ INPUT
         this.cursors = this.input.keyboard.createCursorKeys();
@@ -109,7 +110,8 @@ class WorldScene extends Phaser.Scene
                 let data = {
                     text: activeObject[0].message,
                     action: activeObject[0].action,
-                    parameter: activeObject[0].parameter
+                    parameter: activeObject[0].parameter,
+                    type: activeObject[0].type
                 }
 
                 if ( activeObject[0].type && activeObject[0].type == 'gold' )
