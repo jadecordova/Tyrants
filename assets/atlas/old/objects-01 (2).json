@@ -1,14 +1,56 @@
 {
 	"textures": [
 		{
-			"image": "assets/obj/obj-level-01.png",
+			"image": "assets/atlas/objects-01.png",
 			"format": "RGBA8888",
 			"size": {
-				"w": 647,
-				"h": 125
+				"w": 377,
+				"h": 432
 			},
 			"scale": 1,
 			"frames": [
+				{
+					"filename": "no.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 339,
+						"h": 103
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 339,
+						"h": 103
+					},
+					"frame": {
+						"x": 0,
+						"y": 0,
+						"w": 339,
+						"h": 103
+					}
+				},
+				{
+					"filename": "yes.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 339,
+						"h": 103
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 339,
+						"h": 103
+					},
+					"frame": {
+						"x": 0,
+						"y": 103,
+						"w": 339,
+						"h": 103
+					}
+				},
 				{
 					"filename": "cabinet-01.png",
 					"rotated": false,
@@ -24,8 +66,8 @@
 						"h": 120
 					},
 					"frame": {
-						"x": 1,
-						"y": 1,
+						"x": 0,
+						"y": 206,
 						"w": 119,
 						"h": 120
 					}
@@ -33,169 +75,22 @@
 				{
 					"filename": "closet-01.png",
 					"rotated": false,
-					"trimmed": true,
+					"trimmed": false,
 					"sourceSize": {
 						"w": 73,
 						"h": 120
 					},
 					"spriteSourceSize": {
 						"x": 0,
-						"y": 2,
+						"y": 0,
 						"w": 73,
-						"h": 115
+						"h": 120
 					},
 					"frame": {
-						"x": 122,
-						"y": 1,
+						"x": 119,
+						"y": 206,
 						"w": 73,
-						"h": 115
-					}
-				},
-				{
-					"filename": "kitchen-04.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 35,
-						"h": 106
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 35,
-						"h": 106
-					},
-					"frame": {
-						"x": 197,
-						"y": 1,
-						"w": 35,
-						"h": 106
-					}
-				},
-				{
-					"filename": "bed-01.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 67,
-						"h": 101
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 67,
-						"h": 101
-					},
-					"frame": {
-						"x": 234,
-						"y": 1,
-						"w": 67,
-						"h": 101
-					}
-				},
-				{
-					"filename": "lamp-off-01.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 22,
-						"h": 21
-					},
-					"spriteSourceSize": {
-						"x": 4,
-						"y": 0,
-						"w": 14,
-						"h": 20
-					},
-					"frame": {
-						"x": 234,
-						"y": 104,
-						"w": 14,
-						"h": 20
-					}
-				},
-				{
-					"filename": "furniture-01.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 76,
-						"h": 105
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 5,
-						"w": 76,
-						"h": 97
-					},
-					"frame": {
-						"x": 303,
-						"y": 1,
-						"w": 76,
-						"h": 97
-					}
-				},
-				{
-					"filename": "kitchen-03.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 47,
-						"h": 24
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 47,
-						"h": 24
-					},
-					"frame": {
-						"x": 303,
-						"y": 100,
-						"w": 47,
-						"h": 24
-					}
-				},
-				{
-					"filename": "lamp-on-01.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 22,
-						"h": 21
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 22,
-						"h": 21
-					},
-					"frame": {
-						"x": 352,
-						"y": 100,
-						"w": 22,
-						"h": 21
-					}
-				},
-				{
-					"filename": "chair-03.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 20,
-						"h": 21
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 20,
-						"h": 21
-					},
-					"frame": {
-						"x": 376,
-						"y": 100,
-						"w": 20,
-						"h": 21
+						"h": 120
 					}
 				},
 				{
@@ -213,52 +108,73 @@
 						"h": 73
 					},
 					"frame": {
-						"x": 381,
-						"y": 1,
+						"x": 192,
+						"y": 206,
 						"w": 118,
 						"h": 73
 					}
 				},
 				{
-					"filename": "kitchen-01.png",
+					"filename": "kitchen-04.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 77,
-						"h": 48
+						"w": 35,
+						"h": 106
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 77,
-						"h": 48
+						"w": 35,
+						"h": 106
 					},
 					"frame": {
-						"x": 398,
-						"y": 76,
-						"w": 77,
-						"h": 48
+						"x": 0,
+						"y": 326,
+						"w": 35,
+						"h": 106
 					}
 				},
 				{
-					"filename": "box-01.png",
+					"filename": "furniture-01.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 39,
-						"h": 42
+						"w": 76,
+						"h": 105
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 39,
-						"h": 42
+						"w": 76,
+						"h": 105
 					},
 					"frame": {
-						"x": 477,
-						"y": 76,
-						"w": 39,
-						"h": 42
+						"x": 35,
+						"y": 326,
+						"w": 76,
+						"h": 105
+					}
+				},
+				{
+					"filename": "bed-01.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 67,
+						"h": 101
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 67,
+						"h": 101
+					},
+					"frame": {
+						"x": 111,
+						"y": 326,
+						"w": 67,
+						"h": 101
 					}
 				},
 				{
@@ -276,8 +192,8 @@
 						"h": 68
 					},
 					"frame": {
-						"x": 501,
-						"y": 1,
+						"x": 178,
+						"y": 326,
 						"w": 80,
 						"h": 68
 					}
@@ -297,10 +213,31 @@
 						"h": 49
 					},
 					"frame": {
-						"x": 518,
-						"y": 71,
+						"x": 258,
+						"y": 279,
 						"w": 78,
 						"h": 49
+					}
+				},
+				{
+					"filename": "kitchen-01.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 77,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 77,
+						"h": 48
+					},
+					"frame": {
+						"x": 258,
+						"y": 328,
+						"w": 77,
+						"h": 48
 					}
 				},
 				{
@@ -318,10 +255,31 @@
 						"h": 65
 					},
 					"frame": {
-						"x": 583,
-						"y": 1,
+						"x": 339,
+						"y": 0,
 						"w": 38,
 						"h": 65
+					}
+				},
+				{
+					"filename": "stairs-01.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 64,
+						"h": 64
+					},
+					"frame": {
+						"x": 310,
+						"y": 206,
+						"w": 64,
+						"h": 64
 					}
 				},
 				{
@@ -339,31 +297,52 @@
 						"h": 55
 					},
 					"frame": {
-						"x": 598,
-						"y": 68,
+						"x": 258,
+						"y": 376,
 						"w": 30,
 						"h": 55
 					}
 				},
 				{
-					"filename": "chair-01.png",
+					"filename": "kitchen-03.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 23,
-						"h": 32
+						"w": 47,
+						"h": 24
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 23,
-						"h": 32
+						"w": 47,
+						"h": 24
 					},
 					"frame": {
-						"x": 623,
-						"y": 1,
-						"w": 23,
-						"h": 32
+						"x": 178,
+						"y": 394,
+						"w": 47,
+						"h": 24
+					}
+				},
+				{
+					"filename": "box-01.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 39,
+						"h": 42
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 39,
+						"h": 42
+					},
+					"frame": {
+						"x": 336,
+						"y": 270,
+						"w": 39,
+						"h": 42
 					}
 				},
 				{
@@ -381,8 +360,8 @@
 						"h": 41
 					},
 					"frame": {
-						"x": 630,
-						"y": 35,
+						"x": 192,
+						"y": 279,
 						"w": 16,
 						"h": 41
 					}
@@ -402,18 +381,101 @@
 						"h": 41
 					},
 					"frame": {
-						"x": 630,
-						"y": 78,
+						"x": 208,
+						"y": 279,
 						"w": 16,
 						"h": 41
+					}
+				},
+				{
+					"filename": "chair-01.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 23,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 23,
+						"h": 32
+					},
+					"frame": {
+						"x": 225,
+						"y": 394,
+						"w": 23,
+						"h": 32
+					}
+				},
+				{
+					"filename": "lamp-off-01.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 22,
+						"h": 21
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 22,
+						"h": 21
+					},
+					"frame": {
+						"x": 224,
+						"y": 279,
+						"w": 22,
+						"h": 21
+					}
+				},
+				{
+					"filename": "lamp-on-01.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 22,
+						"h": 21
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 22,
+						"h": 21
+					},
+					"frame": {
+						"x": 224,
+						"y": 300,
+						"w": 22,
+						"h": 21
+					}
+				},
+				{
+					"filename": "chair-03.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 20,
+						"h": 21
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 20,
+						"h": 21
+					},
+					"frame": {
+						"x": 339,
+						"y": 65,
+						"w": 20,
+						"h": 21
 					}
 				}
 			]
 		}
 	],
 	"meta": {
-		"app": "https://www.codeandweb.com/texturepacker",
-		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:963a78b27123639f140153539f13e198:a46af08133d536014df0a162dba94d8e:13639c0ee81921fbc1ca2514b143be55$"
+		"app": "http://free-tex-packer.com",
+		"version": "0.6.6"
 	}
 }

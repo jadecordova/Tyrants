@@ -301,8 +301,8 @@ There is a piece of wood still lit. </property>
   <object id="76" x="423.5" y="131.25" width="26.25" height="26">
    <properties>
     <property name="action" value="Gold"/>
-    <property name="message" value="You found 5 gold!"/>
     <property name="parameter" type="int" value="5"/>
+    <property name="type" value="gold"/>
    </properties>
   </object>
   <object id="78" x="457.5" y="157.5" width="117.75" height="42.75">
@@ -358,8 +358,8 @@ Those may be all right...</property>
   <object id="87" x="775.5" y="580" width="45.5" height="37">
    <properties>
     <property name="action" value="Gold"/>
-    <property name="message" value=" You found 10 gold!"/>
     <property name="parameter" type="int" value="10"/>
+    <property name="type" value="gold"/>
    </properties>
   </object>
   <object id="88" x="874" y="771.5" width="80" height="44">
@@ -376,8 +376,8 @@ Those may be all right...</property>
   <object id="90" x="1294.5" y="258.5" width="41.5" height="34.5">
    <properties>
     <property name="action" value="Gold"/>
-    <property name="message" value="Found 20 Gold!"/>
     <property name="parameter" type="int" value="20"/>
+    <property name="type" value="gold"/>
    </properties>
   </object>
  </objectgroup>

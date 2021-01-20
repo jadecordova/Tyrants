@@ -1063,14 +1063,14 @@
                          "value":"Gold"
                         }, 
                         {
-                         "name":"message",
-                         "type":"string",
-                         "value":"You found 5 gold!"
-                        }, 
-                        {
                          "name":"parameter",
                          "type":"int",
                          "value":5
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"gold"
                         }],
                  "rotation":0,
                  "type":"",
@@ -1253,14 +1253,14 @@
                          "value":"Gold"
                         }, 
                         {
-                         "name":"message",
-                         "type":"string",
-                         "value":" You found 10 gold!"
-                        }, 
-                        {
                          "name":"parameter",
                          "type":"int",
                          "value":10
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"gold"
                         }],
                  "rotation":0,
                  "type":"",
@@ -1319,14 +1319,14 @@
                          "value":"Gold"
                         }, 
                         {
-                         "name":"message",
-                         "type":"string",
-                         "value":"Found 20 Gold!"
-                        }, 
-                        {
                          "name":"parameter",
                          "type":"int",
                          "value":20
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"gold"
                         }],
                  "rotation":0,
                  "type":"",

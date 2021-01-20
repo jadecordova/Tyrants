@@ -79,6 +79,10 @@ class WorldScene extends Phaser.Scene
         var above = map.createStaticLayer( 'Above', tiles, 0, 0 );
 
 
+        //------------------------------------------------------------------------------------------------ COIN
+        this.coin = Utils.CreateCoin( this );
+        this.coinTween = Utils.CreateCoinTween( this, this.coin );
+
         //------------------------------------------------------------------------------------------------ INPUT
         this.cursors = this.input.keyboard.createCursorKeys();
         var keyObj = this.input.keyboard.addKey( 'Space' );  // Get key object
@@ -102,13 +106,21 @@ class WorldScene extends Phaser.Scene
             // Messages and actions. 
             if ( activeObject.length === 1 )
             {
-                this.scene.pause( 'WorldScene' );
-                this.scene.run( 'Message', {
+                let data = {
                     text: activeObject[0].message,
                     action: activeObject[0].action,
                     parameter: activeObject[0].parameter
-                } );
-                //
+                }
+
+                if ( activeObject[0].type && activeObject[0].type == 'gold' )
+                {
+                    this.doActions( null, data );
+                }
+                else
+                {
+                    this.scene.pause( 'WorldScene' );
+                    this.scene.run( 'Message', data );
+                }
             }
         } );
 
@@ -135,14 +147,7 @@ class WorldScene extends Phaser.Scene
 
 
         //------------------------------------------------------------------------------------------------ EVENTS
-        this.events.on( Phaser.Scenes.Events.RESUME, ( strangeThings, data ) =>
-        {
-            console.log( data.gold );
-            if ( data.action !== undefined )
-            {
-                Utils[data.action]( data.parameter );
-            }
-        } );
+        this.events.on( Phaser.Scenes.Events.RESUME, this.doActions );
     }
 
 
@@ -185,6 +190,14 @@ class WorldScene extends Phaser.Scene
         this.spotlight.x = this.girl.x;
         this.spotlight.y = this.girl.y;
     }
+
+    doActions( strangeThings, data ) 
+    {
+        if ( data.action !== undefined )
+        {
+            Utils[data.action]( data.parameter, this.girl, this.coin );
+        }
+    };
 }
 
 export default WorldScene;

@@ -140,9 +140,42 @@ function Sleep()
     console.log( 'sleeping' );
 }
 
-function Gold( quantity )
+function Gold( quantity, player )
 {
-    console.log( 'Found ' + quantity + ' gold!' );
+    player.scene.coin.setPosition( player.x, player.y );
+    player.scene.coin.visible = true;
+    player.scene.coin.anims.play( 'coin', true );
+    player.scene.coinTween.play();
+}
+
+function CreateCoin( scene )
+{
+    let coin = scene.add.sprite( 200, 200, 'atlas-01', 'coin-01.png' );
+    scene.anims.create( {
+        key: 'coin',
+        frames: scene.anims.generateFrameNames( 'atlas-01', {prefix: 'coin-', start: 1, end: 6, zeroPad: 2, suffix: '.png'} ),
+        frameRate: 10,
+        repeat: 2
+    } );
+    coin.visible = false;
+
+    return coin;
+}
+
+function CreateCoinTween( scene, coin )
+{
+    let coinTween = scene.tweens.add( {
+        targets: coin,
+        repeat: 0,
+        props: {
+            alpha: {value: 0, duration: 2000, ease: 'Cubic.easeIn'},
+            y: {value: '-=50', duration: 2000, ease: 'Cubic.easeOut'}
+        }
+    } );
+
+    coinTween.pause();
+
+    return coinTween;
 }
 
 export
@@ -150,6 +183,8 @@ export
     CreateZones,
     CreateObjects,
     CreateAnimations,
+    CreateCoin,
+    CreateCoinTween,
     Sleep,
     Gold
 };

@@ -177,7 +177,7 @@ class Message extends Phaser.Scene
     create()
     {
 
-        this.background = this.add.image( this.originX, this.originY, 'dialog' );
+        this.background = this.add.image( this.originX, this.originY, 'atlas-01', 'dialog.png' );
         this.background.alpha = 0.5;
 
         this.message = this.add.text( this.originX, this.originY, this.txt, this.messageStyle );
