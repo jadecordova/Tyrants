@@ -102,12 +102,28 @@ Creates animations.
 function CreateAnimations( scene, imageKey )
 {
     scene.anims.create( {
+        key: 'down-stop',
+        frames: scene.anims.generateFrameNumbers( imageKey, {
+            frames: [0]
+        } ),
+        frameRate: 10,
+        repeat: 0
+    } );
+    scene.anims.create( {
         key: 'down',
         frames: scene.anims.generateFrameNumbers( imageKey, {
             frames: [1, 2, 3, 4, 5, 6, 7, 8]
         } ),
         frameRate: 10,
         repeat: -1
+    } );
+    scene.anims.create( {
+        key: 'up-stop',
+        frames: scene.anims.generateFrameNumbers( imageKey, {
+            frames: [9]
+        } ),
+        frameRate: 10,
+        repeat: 0
     } );
     scene.anims.create( {
         key: 'up',
@@ -118,12 +134,28 @@ function CreateAnimations( scene, imageKey )
         repeat: -1
     } );
     scene.anims.create( {
+        key: 'right-stop',
+        frames: scene.anims.generateFrameNumbers( imageKey, {
+            frames: [18]
+        } ),
+        frameRate: 10,
+        repeat: 0
+    } );
+    scene.anims.create( {
         key: 'right',
         frames: scene.anims.generateFrameNumbers( imageKey, {
             frames: [19, 20, 21, 22, 23, 24, 25, 26]
         } ),
         frameRate: 10,
         repeat: -1
+    } );
+    scene.anims.create( {
+        key: 'left-stop',
+        frames: scene.anims.generateFrameNumbers( imageKey, {
+            frames: [27]
+        } ),
+        frameRate: 10,
+        repeat: 0
     } );
     scene.anims.create( {
         key: 'left',
@@ -140,15 +172,33 @@ function Sleep()
     console.log( 'sleeping' );
 }
 
-function Gold( quantity, player )
+function Gold( data )
 {
-    player.scene.coin.visible = true;
-    player.scene.coin.setPosition( player.x, player.y );
-    player.scene.coin.anims.play( 'coin', true );
-    player.scene.coinTween.play();
-    player.scene.coinText.setPosition( player.x, player.y );
-    player.scene.coinText.text = '+' + quantity;
-    player.scene.coinText.visible = true;
+    if ( Number( data.parameter ) > 0 )
+    {
+        // Show coin.
+        data.coin.visible = true;
+        data.coin.setPosition( data.player.x, data.player.y );
+        data.coin.anims.play( 'coin', true );
+        data.coinTween.play();
+
+        // Show quantity text.
+        data.coinText.setPosition( data.player.x, data.player.y );
+        data.coinText.text = '+' + data.parameter;
+        data.coinText.visible = true;
+
+        // Give gold to player.
+        data.player.gold += Number( data.parameter );
+
+        // Set gold to 0 in object.
+        data.object.parameter = 0;
+
+        // Set new message in object.
+        data.object.message = 'Nothing.';
+
+        // Remove action.
+        data.object.action = undefined;
+    }
 }
 
 function CreateCoin( scene )
@@ -183,9 +233,28 @@ function CreateCoinTween( scene, coin, text )
 
 function CreateCoinText( scene )
 {
-    let txt = scene.add.text( 0, 0, '' );
+    let style = {
+        fontFamily: 'textFont',
+        fontSize: '18px',
+        color: '#fff',
+        stroke: '#000',
+        strokeThickness: 3,
+        align: 'center',
+    }
+
+    let txt = scene.add.text( 0, 0, '', style );
     txt.visible = false;
     return txt;
+}
+
+function TakeItem( data )
+{
+    console.log( data.result );
+    if ( data.result )
+    {
+        data.player.currentItem = data.parameter;
+        data.itemSprite.destroy();
+    }
 }
 
 export
@@ -197,5 +266,6 @@ export
     CreateCoinTween,
     CreateCoinText,
     Sleep,
-    Gold
+    Gold,
+    TakeItem
 };

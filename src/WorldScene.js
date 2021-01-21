@@ -8,13 +8,18 @@ class WorldScene extends Phaser.Scene
     {
         super( {key: 'WorldScene'} );
 
+        // Message dialog.
         this.dialog;
+
+        // Player direction.
+        this.direction = 'down';
     }
 
-    init()
+    init( data )
     {
         // Get a reference to the Message scene.
         this.dialog = this.scene.get( 'Message' );
+        this.data = data;
 
     }
 
@@ -42,6 +47,16 @@ class WorldScene extends Phaser.Scene
         this.items = Utils.CreateObjects( this, map, 'atlas-01', 'Objects' );
         this.actions = Utils.CreateZones( this, map, 'Interactions' );
 
+
+        //------------------------------------------------------------------------------------------------ FIRE
+        this.fire = this.add.sprite( 355, 112, 'atlas-01', 'fire1_ 01.png' );
+        this.anims.create( {
+            key: 'fire',
+            frames: this.anims.generateFrameNames( 'atlas-01', {prefix: 'fire1_ ', start: 1, end: 13, zeroPad: 2, suffix: '.png'} ),
+            frameRate: 10,
+            repeat: -1
+        } );
+        this.fire.anims.play( 'fire' );
 
         //------------------------------------------------------------------------------------------------ GIRL
         // Player.
@@ -108,13 +123,20 @@ class WorldScene extends Phaser.Scene
             if ( activeObject.length === 1 )
             {
                 let data = {
-                    text: activeObject[0].message,
+                    object: activeObject[0],
+                    player: this.girl,
+                    coin: this.coin,
+                    coinTween: this.coinTween,
+                    coinText: this.coinText,
+                    message: activeObject[0].message,
                     action: activeObject[0].action,
                     parameter: activeObject[0].parameter,
+                    itemSprite: this[activeObject[0].parameter] || null,
+                    result: null,
                     type: activeObject[0].type
                 }
 
-                if ( activeObject[0].type && activeObject[0].type == 'gold' )
+                if ( activeObject[0].type && activeObject[0].type == 'gold' && activeObject[0].parameter )
                 {
                     this.doActions( null, data );
                 }
@@ -139,8 +161,8 @@ class WorldScene extends Phaser.Scene
         let darkness = this.add.image( 0, 0, 'black' ).setOrigin( 0, 0 ).setScale( this.physics.world.bounds.width, this.physics.world.bounds.height ).setAlpha( 0.98 );
 
         this.spotlight = this.make.sprite( {
-            x: this.girl.x,
-            y: this.girl.y,
+            x: this.fire.x,
+            y: this.fire.y,
             key: 'mask',
             add: false
         } );
@@ -156,29 +178,33 @@ class WorldScene extends Phaser.Scene
     update( time, delta )
     {
         this.girl.body.setVelocity( 0 );
+
         // Horizontal movement
         if ( this.cursors.left.isDown )
         {
-            //this.message.hideMessage();
             this.girl.body.setVelocityX( -80 );
             this.girl.anims.play( 'left', true );
-        } else if ( this.cursors.right.isDown )
+            this.direction = 'left';
+        }
+        else if ( this.cursors.right.isDown )
         {
-            //this.message.hideMessage();
             this.girl.body.setVelocityX( 80 );
             this.girl.anims.play( 'right', true );
+            this.direction = 'right';
         }
+
         // Vertical movement
         if ( this.cursors.up.isDown )
         {
-            //this.message.hideMessage();
             this.girl.body.setVelocityY( -80 );
             this.girl.anims.play( 'up', true );
-        } else if ( this.cursors.down.isDown )
+            this.direction = 'up';
+        }
+        else if ( this.cursors.down.isDown )
         {
-            //this.message.hideMessage();
             this.girl.body.setVelocityY( 80 );
             this.girl.anims.play( 'down', true );
+            this.direction = 'down';
         }
 
         if ( !this.cursors.up.isDown &&
@@ -186,18 +212,22 @@ class WorldScene extends Phaser.Scene
             !this.cursors.right.isDown &&
             !this.cursors.left.isDown )
         {
+            this.girl.anims.play( this.direction + '-stop' );
             this.girl.anims.stop();
         }
 
-        this.spotlight.x = this.girl.x;
-        this.spotlight.y = this.girl.y;
+        if ( this.girl.currentItem == 'fire' )
+        {
+            this.spotlight.x = this.girl.x;
+            this.spotlight.y = this.girl.y;
+        }
     }
 
     doActions( strangeThings, data ) 
     {
         if ( data.action !== undefined )
         {
-            Utils[data.action]( data.parameter, this.girl, this.coin );
+            Utils[data.action]( data );
         }
     };
 }

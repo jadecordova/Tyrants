@@ -12,6 +12,8 @@ export default class Player extends Unit
         this.magic = null;
         this.gold = 0;
         this.experience = 0;
+        this.items = [];
+        this.currentItem = null;
     }
 
 }

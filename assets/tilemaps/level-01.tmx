@@ -287,15 +287,17 @@
  <objectgroup id="7" name="Interactions">
   <object id="73" x="177.5" y="129.5" width="95" height="26.25">
    <properties>
-    <property name="action" value="Sleep"/>
     <property name="message">An old sofa. Looks ruined and unstable.
 Probably not a good idea to sit on it.</property>
    </properties>
   </object>
-  <object id="75" x="322" y="128.75" width="59" height="10.25">
+  <object id="75" x="322" y="128.75" width="59" height="16.9167">
    <properties>
+    <property name="action" value="TakeItem"/>
     <property name="message">What used to be a fireplace...
-There is a piece of wood still lit. </property>
+There is a piece of wood still lit.
+Take it?</property>
+    <property name="parameter" value="fire"/>
    </properties>
   </object>
   <object id="76" x="423.5" y="131.25" width="26.25" height="26">
@@ -351,7 +353,7 @@ Those may be all right...</property>
   </object>
   <object id="86" x="771.5" y="321" width="90.5" height="124.5">
    <properties>
-    <property name="action" value="sleep"/>
+    <property name="action" value="Sleep"/>
     <property name="message" value="Do you want to rest here?"/>
    </properties>
   </object>

@@ -6,16 +6,13 @@ class Message extends Phaser.Scene
     {
         super( {key: 'Message'} );
 
-        this.txt;
         this.message;
     }
 
     init( data )
     {
-        this.txt = data.text;
-        this.action = data.action;
-        this.parameter = data.parameter;
-        this.result = 'yes';
+        this.data = data;
+        this.data.result = 1;
 
         /*
         {
@@ -122,20 +119,15 @@ class Message extends Phaser.Scene
         // Check for key down.
         spaceKey.on( 'down', event =>
         {
-            this.scene.resume( 'WorldScene', {
-                result: this.result,
-                action: this.action,
-                parameter: this.parameter
-            } );
-
+            this.scene.resume( 'WorldScene', this.data );
             this.scene.sleep( 'Message' );
         } );
 
         leftKey.on( 'down', event =>
         {
-            if ( this.action !== undefined )
+            if ( this.data.action !== undefined )
             {
-                if ( this.result === 'no' )
+                if ( this.data.result === 0 )
                 {
                     this.setState( 'yes' );
                 }
@@ -144,24 +136,22 @@ class Message extends Phaser.Scene
 
         rightKey.on( 'down', event =>
         {
-            if ( this.action !== undefined )
+            if ( this.data.action !== undefined )
             {
-                if ( this.result === 'yes' )
+                if ( this.data.result === 1 )
                 {
                     this.setState( 'no' );
                 }
             }
         } );
 
-        this.events.on( Phaser.Scenes.Events.WAKE, ( strageThings, eventData ) =>
+        this.events.on( Phaser.Scenes.Events.WAKE, ( event, data ) =>
         {
-            this.message.text = eventData.text;
-            this.action = eventData.action;
-            this.parameter = eventData.parameter;
-
+            this.data = data;
+            this.message.text = this.data.message;
             this.setState( 'yes' );
 
-            if ( this.action == undefined )
+            if ( this.data.action == undefined )
             {
                 this.hideButtons();
             }
@@ -179,7 +169,7 @@ class Message extends Phaser.Scene
         this.background = this.add.image( this.originX, this.originY, 'atlas-01', 'dialog.png' );
         this.background.alpha = 0.5;
 
-        this.message = this.add.text( this.originX, this.originY, this.txt, this.messageStyle );
+        this.message = this.add.text( this.originX, this.originY, this.data.message, this.messageStyle );
         this.message.align = 1;
         this.message.setOrigin( 0.5 );
 
@@ -193,7 +183,7 @@ class Message extends Phaser.Scene
         this.yes.visible = false;
         this.no.visible = false;
 
-        if ( this.action == undefined )
+        if ( this.data.action == undefined )
         {
             this.hideButtons();
         }
@@ -211,7 +201,7 @@ class Message extends Phaser.Scene
             this.buttonNO.visible = false;
             this.yes.setStyle( this.onStyle );
             this.no.setStyle( this.offStyle );
-            this.result = 'yes';
+            this.data.result = 1;
         }
         else
         {
@@ -219,7 +209,7 @@ class Message extends Phaser.Scene
             this.buttonNO.visible = true;
             this.yes.setStyle( this.offStyle );
             this.no.setStyle( this.onStyle );
-            this.result = 'no';
+            this.data.result = 0;
         }
     }
 

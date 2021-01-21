@@ -1,0 +1,43 @@
+                this.spawns = this.physics.add.group( {
+                    classType: Phaser.GameObjects.Zone
+                } );
+                for ( var i = 0; i < 10; i++ )
+                {
+                    var x = Phaser.Math.RND.between( 0, this.physics.world.bounds.width );
+                    var y = Phaser.Math.RND.between( 0, this.physics.world.bounds.height );
+                    // parameters are x, y, width, height
+                    this.spawns.create( x, y, 64, 64 );
+                }
+                this.physics.add.overlap( this.player, this.spawns, this.onMeetEnemy, false, this );
+        this.sys.events.on( 'wake', this.wake, this );
+
+
+
+
+
+    wake()
+    {
+        this.cursors.left.reset();
+        this.cursors.right.reset();
+        this.cursors.up.reset();
+        this.cursors.down.reset();
+    }
+
+
+
+
+
+
+    onMeetEnemy( player, zone )
+    {
+        // we move the zone to some other location
+        zone.x = Phaser.Math.RND.between( 0, this.physics.world.bounds.width );
+        zone.y = Phaser.Math.RND.between( 0, this.physics.world.bounds.height );
+
+        // shake the world
+        this.cameras.main.shake( 300 );
+
+        // switch to BattleScene
+        this.scene.switch( 'BattleScene' );
+    }
+

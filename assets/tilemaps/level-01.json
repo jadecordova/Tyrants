@@ -1019,11 +1019,6 @@
                  "name":"",
                  "properties":[
                         {
-                         "name":"action",
-                         "type":"string",
-                         "value":"Sleep"
-                        }, 
-                        {
                          "name":"message",
                          "type":"string",
                          "value":"An old sofa. Looks ruined and unstable.\nProbably not a good idea to sit on it."
@@ -1036,14 +1031,24 @@
                  "y":129.5
                 }, 
                 {
-                 "height":10.25,
+                 "height":16.9166666666667,
                  "id":75,
                  "name":"",
                  "properties":[
                         {
+                         "name":"action",
+                         "type":"string",
+                         "value":"TakeItem"
+                        }, 
+                        {
                          "name":"message",
                          "type":"string",
-                         "value":"What used to be a fireplace...\nThere is a piece of wood still lit. "
+                         "value":"What used to be a fireplace...\nThere is a piece of wood still lit.\nTake it?"
+                        }, 
+                        {
+                         "name":"parameter",
+                         "type":"string",
+                         "value":"fire"
                         }],
                  "rotation":0,
                  "type":"",
@@ -1228,7 +1233,7 @@
                         {
                          "name":"action",
                          "type":"string",
-                         "value":"sleep"
+                         "value":"Sleep"
                         }, 
                         {
                          "name":"message",
