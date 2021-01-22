@@ -13,6 +13,9 @@ class WorldScene extends Phaser.Scene
 
         // Player direction.
         this.direction = 'down';
+
+        // Coin tween - created in Utils.Gold().
+        this.coinTween;
     }
 
     init( data )
@@ -20,13 +23,10 @@ class WorldScene extends Phaser.Scene
         // Get a reference to the Message scene.
         this.dialog = this.scene.get( 'Message' );
         this.data = data;
-
     }
 
     create()
     {
-
-
 
         //------------------------------------------------------------------------------------------------ WORLD LOWER LAYERS
         const map = this.make.tilemap( {key: 'map'} );
@@ -62,8 +62,8 @@ class WorldScene extends Phaser.Scene
         // Player.
         this.girl = new Player( {
             scene: this,
-            x: 200,
-            y: 200,
+            x: 330,
+            y: 140,
             texture: 'girl',
             frame: 0,
             type: 'heroe',
@@ -97,7 +97,6 @@ class WorldScene extends Phaser.Scene
         //------------------------------------------------------------------------------------------------ COIN
         this.coin = Utils.CreateCoin( this );
         this.coinText = Utils.CreateCoinText( this );
-        this.coinTween = Utils.CreateCoinTween( this, this.coin, this.coinText );
 
         //------------------------------------------------------------------------------------------------ INPUT
         this.cursors = this.input.keyboard.createCursorKeys();
@@ -125,15 +124,7 @@ class WorldScene extends Phaser.Scene
                 let data = {
                     object: activeObject[0],
                     player: this.girl,
-                    coin: this.coin,
-                    coinTween: this.coinTween,
-                    coinText: this.coinText,
-                    message: activeObject[0].message,
-                    action: activeObject[0].action,
-                    parameter: activeObject[0].parameter,
-                    itemSprite: this[activeObject[0].parameter] || null,
                     result: null,
-                    type: activeObject[0].type
                 }
 
                 if ( activeObject[0].type && activeObject[0].type == 'gold' && activeObject[0].parameter )
@@ -158,6 +149,7 @@ class WorldScene extends Phaser.Scene
         //------------------------------------------------------------------------------------------------ DARKNESS
         // Black image (1px) to darken scenne.
         // Must scale it to cover the whole world.
+
         let darkness = this.add.image( 0, 0, 'black' ).setOrigin( 0, 0 ).setScale( this.physics.world.bounds.width, this.physics.world.bounds.height ).setAlpha( 0.98 );
 
         this.spotlight = this.make.sprite( {
@@ -169,7 +161,6 @@ class WorldScene extends Phaser.Scene
         darkness.mask = new Phaser.Display.Masks.BitmapMask( this, this.spotlight );
         darkness.mask.invertAlpha = true;
 
-
         //------------------------------------------------------------------------------------------------ EVENTS
         this.events.on( Phaser.Scenes.Events.RESUME, this.doActions );
     }
@@ -179,55 +170,67 @@ class WorldScene extends Phaser.Scene
     {
         this.girl.body.setVelocity( 0 );
 
-        // Horizontal movement
-        if ( this.cursors.left.isDown )
+        if ( Boolean( this.cursors.left.isDown ) +
+            Boolean( this.cursors.right.isDown ) +
+            Boolean( this.cursors.down.isDown ) +
+            Boolean( this.cursors.up.isDown ) == 1 )
         {
-            this.girl.body.setVelocityX( -80 );
-            this.girl.anims.play( 'left', true );
-            this.direction = 'left';
-        }
-        else if ( this.cursors.right.isDown )
-        {
-            this.girl.body.setVelocityX( 80 );
-            this.girl.anims.play( 'right', true );
-            this.direction = 'right';
-        }
+            // Horizontal movement
+            if ( this.cursors.left.isDown )
+            {
+                this.girl.body.setVelocityX( -80 );
+                this.girl.anims.play( 'left', true );
+                this.direction = 'left';
+            }
+            else if ( this.cursors.right.isDown )
+            {
+                this.girl.body.setVelocityX( 80 );
+                this.girl.anims.play( 'right', true );
+                this.direction = 'right';
+            }
 
-        // Vertical movement
-        if ( this.cursors.up.isDown )
-        {
-            this.girl.body.setVelocityY( -80 );
-            this.girl.anims.play( 'up', true );
-            this.direction = 'up';
-        }
-        else if ( this.cursors.down.isDown )
-        {
-            this.girl.body.setVelocityY( 80 );
-            this.girl.anims.play( 'down', true );
-            this.direction = 'down';
-        }
+            // Vertical movement
+            if ( this.cursors.up.isDown )
+            {
+                this.girl.body.setVelocityY( -80 );
+                this.girl.anims.play( 'up', true );
+                this.direction = 'up';
+            }
+            else if ( this.cursors.down.isDown )
+            {
+                this.girl.body.setVelocityY( 80 );
+                this.girl.anims.play( 'down', true );
+                this.direction = 'down';
+            }
 
-        if ( !this.cursors.up.isDown &&
-            !this.cursors.down.isDown &&
-            !this.cursors.right.isDown &&
-            !this.cursors.left.isDown )
+            if ( !this.cursors.up.isDown &&
+                !this.cursors.down.isDown &&
+                !this.cursors.right.isDown &&
+                !this.cursors.left.isDown )
+            {
+                this.girl.anims.play( this.direction + '-stop' );
+                this.girl.anims.stop();
+            }
+
+            if ( this.girl.currentItem == 'fire' )
+            {
+                this.spotlight.x = this.girl.x;
+                this.spotlight.y = this.girl.y;
+            }
+        }
+        else
         {
             this.girl.anims.play( this.direction + '-stop' );
             this.girl.anims.stop();
         }
-
-        if ( this.girl.currentItem == 'fire' )
-        {
-            this.spotlight.x = this.girl.x;
-            this.spotlight.y = this.girl.y;
-        }
     }
 
-    doActions( strangeThings, data ) 
+    doActions( event, data ) 
     {
-        if ( data.action !== undefined )
+
+        if ( data.object.action !== undefined )
         {
-            Utils[data.action]( data );
+            Utils[data.object.action]( data );
         }
     };
 }

@@ -287,8 +287,11 @@
  <objectgroup id="7" name="Interactions">
   <object id="73" x="177.5" y="129.5" width="95" height="26.25">
    <properties>
+    <property name="action" value="Gold"/>
     <property name="message">An old sofa. Looks ruined and unstable.
 Probably not a good idea to sit on it.</property>
+    <property name="parameter" type="int" value="1"/>
+    <property name="type" value="gold"/>
    </properties>
   </object>
   <object id="75" x="322" y="128.75" width="59" height="16.9167">

@@ -125,7 +125,7 @@ class Message extends Phaser.Scene
 
         leftKey.on( 'down', event =>
         {
-            if ( this.data.action !== undefined )
+            if ( this.data.object.action !== undefined )
             {
                 if ( this.data.result === 0 )
                 {
@@ -136,7 +136,7 @@ class Message extends Phaser.Scene
 
         rightKey.on( 'down', event =>
         {
-            if ( this.data.action !== undefined )
+            if ( this.data.object.action !== undefined )
             {
                 if ( this.data.result === 1 )
                 {
@@ -148,10 +148,10 @@ class Message extends Phaser.Scene
         this.events.on( Phaser.Scenes.Events.WAKE, ( event, data ) =>
         {
             this.data = data;
-            this.message.text = this.data.message;
+            this.message.text = this.data.object.message;
             this.setState( 'yes' );
 
-            if ( this.data.action == undefined )
+            if ( this.data.object.action == undefined )
             {
                 this.hideButtons();
             }
@@ -169,7 +169,7 @@ class Message extends Phaser.Scene
         this.background = this.add.image( this.originX, this.originY, 'atlas-01', 'dialog.png' );
         this.background.alpha = 0.5;
 
-        this.message = this.add.text( this.originX, this.originY, this.data.message, this.messageStyle );
+        this.message = this.add.text( this.originX, this.originY, this.data.object.message, this.messageStyle );
         this.message.align = 1;
         this.message.setOrigin( 0.5 );
 
@@ -183,7 +183,7 @@ class Message extends Phaser.Scene
         this.yes.visible = false;
         this.no.visible = false;
 
-        if ( this.data.action == undefined )
+        if ( this.data.object.action == undefined )
         {
             this.hideButtons();
         }

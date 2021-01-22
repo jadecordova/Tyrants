@@ -35,7 +35,6 @@ function CreateZones( scene, map, layerName )
 }
 
 
-
 /*----------------------------------------------------------------------------------------------------------------------------------------------------------------
 Creates active objects from Tiled object layer.
 @scene: the scene the map belongs to.
@@ -74,7 +73,6 @@ function CreateObjects( scene, map, imageKey, layerName )
 }
 
 
-
 /*----------------------------------------------------------------------------------------------------------------------------------------------------------------
 Assigns Tiled object properties directly to object.
 @obj: object to assign properties to.
@@ -91,7 +89,6 @@ function AssignProperties( prop )
 
     return properties;
 }
-
 
 
 /*----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -167,29 +164,61 @@ function CreateAnimations( scene, imageKey )
     } );
 }
 
+
+/*----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Sleep action.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 function Sleep()
 {
     console.log( 'sleeping' );
 }
 
+
+/*----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Gold animation and assignment to player.
+@data: object containing player, object info and result of dialog.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 function Gold( data )
 {
-    if ( Number( data.parameter ) > 0 )
+    if ( Number( data.object.parameter ) > 0 )
     {
+        let coin = data.player.scene.coin;
+        let tween = data.player.scene.coinTween;
+        let message = data.player.scene.coinText;
+
         // Show coin.
-        data.coin.visible = true;
-        data.coin.setPosition( data.player.x, data.player.y );
-        data.coin.anims.play( 'coin', true );
-        data.coinTween.play();
+        coin.setPosition( data.player.x, data.player.y );
+        coin.visible = true;
+        coin.anims.play( 'coin', true );
 
         // Show quantity text.
-        data.coinText.setPosition( data.player.x, data.player.y );
-        data.coinText.text = '+' + data.parameter;
-        data.coinText.visible = true;
+        message.setPosition( data.player.x, data.player.y );
+        message.text = '+' + data.object.parameter;
+        message.visible = true;
+
+        // Use scene tween if exits, or create it.
+        if ( !tween )
+        {
+            data.player.scene.coinTween = data.player.scene.tweens.add( {
+                targets: [data.player.scene.coin, data.player.scene.coinText],
+                repeat: 0,
+                props: {
+                    y: {value: '-=50', duration: 2000, ease: 'Cubic.easeOut'},
+                    alpha: {value: 0, duration: 2000, ease: 'Cubic.easeIn'},
+                }
+            } );
+
+            tween = data.player.scene.coinTween;
+        }
+
+        // Set start value of tween.
+        // Setting just the coin value to the y position of the player simply doesn't work...
+        tween.data['0'].start = data.player.y;
+        tween.data['1'].start = data.player.y;
+        tween.restart();
 
         // Give gold to player.
         data.player.gold += Number( data.parameter );
-
         // Set gold to 0 in object.
         data.object.parameter = 0;
 
@@ -198,9 +227,15 @@ function Gold( data )
 
         // Remove action.
         data.object.action = undefined;
+
     }
 }
 
+
+/*----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Creates coin.
+@scene: scene object.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 function CreateCoin( scene )
 {
     let coin = scene.add.sprite( 200, 200, 'atlas-01', 'coin-01.png' );
@@ -215,22 +250,11 @@ function CreateCoin( scene )
     return coin;
 }
 
-function CreateCoinTween( scene, coin, text )
-{
-    let coinTween = scene.tweens.add( {
-        targets: [coin, text],
-        repeat: 0,
-        props: {
-            alpha: {value: 0, duration: 2000, ease: 'Cubic.easeIn'},
-            y: {value: '-=50', duration: 2000, ease: 'Cubic.easeOut'}
-        }
-    } );
 
-    coinTween.pause();
-
-    return coinTween;
-}
-
+/*----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Creates text showing gold quantity.
+@scence: scene object.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 function CreateCoinText( scene )
 {
     let style = {
@@ -241,19 +265,22 @@ function CreateCoinText( scene )
         strokeThickness: 3,
         align: 'center',
     }
-
     let txt = scene.add.text( 0, 0, '', style );
     txt.visible = false;
     return txt;
 }
 
+
+/*----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Takes item.
+@data: object containing player, object info and result of dialog.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 function TakeItem( data )
 {
-    console.log( data.result );
     if ( data.result )
     {
-        data.player.currentItem = data.parameter;
-        data.itemSprite.destroy();
+        data.player.currentItem = data.object.parameter;
+        data.player.scene[data.object.parameter].destroy();
     }
 }
 
@@ -263,7 +290,6 @@ export
     CreateObjects,
     CreateAnimations,
     CreateCoin,
-    CreateCoinTween,
     CreateCoinText,
     Sleep,
     Gold,

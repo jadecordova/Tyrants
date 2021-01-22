@@ -1019,9 +1019,24 @@
                  "name":"",
                  "properties":[
                         {
+                         "name":"action",
+                         "type":"string",
+                         "value":"Gold"
+                        }, 
+                        {
                          "name":"message",
                          "type":"string",
                          "value":"An old sofa. Looks ruined and unstable.\nProbably not a good idea to sit on it."
+                        }, 
+                        {
+                         "name":"parameter",
+                         "type":"int",
+                         "value":1
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"gold"
                         }],
                  "rotation":0,
                  "type":"",
@@ -1031,7 +1046,7 @@
                  "y":129.5
                 }, 
                 {
-                 "height":16.9166666666667,
+                 "height":16.9167,
                  "id":75,
                  "name":"",
                  "properties":[
