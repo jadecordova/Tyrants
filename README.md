@@ -1,6 +1,6 @@
-# Phaser 3 Webpack Project Template
+# Tyrants
 
-A Phaser 3 Project Template
+An RPG game made with Phaser 3 (JavaScript, Node). Webpack instructions below.  
 
 ### Requirements
 
