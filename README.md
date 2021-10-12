@@ -1,6 +1,6 @@
 # Tyrants
 
-An RPG game made with Phaser 3 (JavaScript, Node). Webpack instructions below.  
+An RPG game made with Phaser 3 (JavaScript, Node). Webpack instructions below.  Right now it's in the initial stage, just working out the mechanics of sprite animation and user interaction.
 
 ### Requirements
 
